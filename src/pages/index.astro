@@ -11,7 +11,7 @@ import Layout from "../layouts/Layout.astro";
         <Image
           src={import("../assets/Images/home_background_Image.png")}
           alt="Home background Image"
-          class="absolute left-0 top-0 h-screen w-full z-0"
+          class="absolute left-0 top-0 h-screen w-full z-0 object-cover"
         />
       </div>
       <div class="container flex flex-col gap-12 px-2 uppercase z-50">
@@ -24,14 +24,14 @@ import Layout from "../layouts/Layout.astro";
           </h1>
         </div>
         <div class="flex flex-col gap-4 uppercase text-text-title">
-          <h2 class="text-xl font-bold text-primary-orange md:text-2xl">
+          <p class="text-xl font-bold text-primary-orange md:text-2xl">
             June 19-20 | 2024
-          </h2>
+          </p>
           <div
             class="text-md flex flex-col gap-0 border-l-2 border-solid border-primary-orange px-4 font-semibold md:text-lg"
           >
-            <h3>Budapest, Hungary</h3>
-            <h3>Bosch Innovation Campus</h3>
+            <p>Budapest, Hungary</p>
+            <p>Bosch Innovation Campus</p>
           </div>
         </div>
       </div>
@@ -84,9 +84,9 @@ import Layout from "../layouts/Layout.astro";
               width="40"
               height="40"
             />
-            <h4 class="text-sm uppercase leading-normal">
+            <h3 class="text-sm uppercase leading-normal">
               Quantum Algorithms &amp; Information
-            </h4>
+            </h3>
           </div>
           <div
             class="my-4 flex min-w-[150px] max-w-[200px] flex-col items-center gap-4 text-center"
@@ -97,9 +97,9 @@ import Layout from "../layouts/Layout.astro";
               width="40"
               height="40"
             />
-            <h4 class="text-sm uppercase leading-normal">
+            <h3 class="text-sm uppercase leading-normal">
               Quantum Error Correction
-            </h4>
+            </h3>
           </div>
           <div
             class="my-4 flex min-w-[150px] max-w-[200px] flex-col items-center gap-4 text-center"
@@ -110,9 +110,9 @@ import Layout from "../layouts/Layout.astro";
               width="40"
               height="40"
             />
-            <h4 class="text-sm uppercase leading-normal">
+            <h3 class="text-sm uppercase leading-normal">
               Quantum Software Engineering
-            </h4>
+            </h3>
           </div>
           <div
             class="my-4 flex min-w-[150px] max-w-[200px] flex-col items-center gap-4 text-center"
@@ -123,9 +123,9 @@ import Layout from "../layouts/Layout.astro";
               width="40"
               height="40"
             />
-            <h4 class="text-sm uppercase leading-normal">
+            <h3 class="text-sm uppercase leading-normal">
               HPC &amp; Quantum Computing
-            </h4>
+            </h3>
           </div>
           <div
             class="my-4 flex min-w-[150px] max-w-[200px] flex-col items-center gap-4 text-center"
@@ -138,7 +138,7 @@ import Layout from "../layouts/Layout.astro";
               width="40"
               height="40"
             />
-            <h4 class="text-sm uppercase leading-normal">Quantum Sensing</h4>
+            <h3 class="text-sm uppercase leading-normal">Quantum Sensing</h3>
           </div>
         </div>
         <div class="flex flex-col gap-8">
