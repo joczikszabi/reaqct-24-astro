@@ -60,7 +60,7 @@ html {
   }
   
   .sponsors-table td, .sponsors-table th {
-    @apply py-2 px-2 text-left;
+    @apply py-3 px-4 text-left;
   }
 
   .sponsors-table td:first-child {

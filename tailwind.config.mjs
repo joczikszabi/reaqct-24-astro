@@ -11,7 +11,7 @@ export default {
 		  colors: {
 			primary: {
 			  indigo: '#171D44',
-			  indigolight: '#202648',
+			  indigolight: '#1c2247',
 			  orange: '#FFAC71',
 			  secondary: '#8E92B2',
 			},
