@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Submission - ReAQCT 2024">
+  <main>
+    <section class="pt-12">
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="650"
+        height="650"
+        class="absolute right-[-5%] top-[5%] z-0 opacity-10"
+      />
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="400"
+        height="400"
+        class="absolute left-[5%] top-[50%] z-0 opacity-10"
+      />
+      <div class="container relative flex flex-col gap-12">
+        <div class="flex w-full flex-col gap-6">
+          <h1
+            class="text-xl font-semibold uppercase text-text-title md:text-2xl"
+          >
+            Submission
+          </h1>
+          <p>
+            <span class="font-semibold text-primary-orange">ReAQCT 2024</span>
+            serves as a conference dedicated to being a premier venue for the presentation
+            of high-quality original research, groundbreaking innovations, and compelling
+            insights in the domain of quantum computing and technology. Technical
+            papers, encompassing a wide range of topics related to the recent advances
+            of quantum computing and technology, are peer-reviewed and eligible for
+            submission in one of the designated technical paper tracks.
+          </p>
+          <p>
+            Please refer to the pages{" "}
+            <a
+              class="font-semibold text-primary-orange underline"
+              href="https://easychair.org/cfp/reaqct2024"
+            >
+              EacyChair CFP
+            </a>{" "}
+            and submit your paper using{" "}
+            <a
+              class="font-semibold text-primary-orange underline"
+              href="https://easychair.org/account/signin?l=IsWmuxKH1JTDf3yRpwObSJ"
+            >
+              easyChair
+            </a>
+            .
+          </p>
+          <p>
+            Submission deadline <span class="font-semibold text-primary-orange"
+              >March 22, 2024</span
+            >.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

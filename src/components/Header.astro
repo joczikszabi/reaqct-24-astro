@@ -1,21 +1,24 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../assets/logos/logo_v1.png";
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+const currentPath = new URL(Astro.request.url).pathname;
 ---
 
 <header class="relative z-[500] flex h-[72px]">
   <div class="container mx-auto flex justify-between px-2">
     <div class="flex items-center gap-4 text-text-title">
-      <Image src={logo} alt="ReAQCT logo" width="35" height="25" />
+      <Image
+        src={import("../assets/logos/logo_v1.png")}
+        alt="ReAQCT logo"
+        width="35"
+        height="25"
+      />
       <a href="/" class="font-bold">REAQCT 2024</a>
     </div>
     <div class="hidden items-center gap-4 font-medium md:flex xl:gap-6">
       <div class="flex gap-4 text-text-normal xl:gap-6">
         <a
           href="/"
-          class={currentPath === ""
+          class={currentPath === "/"
             ? "font-semibold text-primary-orange"
             : "text-text-normal hover:text-primary-orange active:text-primary-orange"}
         >

@@ -1,0 +1,205 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import CommitteeMember from "../components/CommitteeMember.astro";
+
+const committeeChairs = {
+  program: [
+    {
+      name: "Adam Glos (Chair)",
+      institute: "Institute of Theoretical and Applied Informatics, PAS",
+    },
+    {
+      name: "Florentin Reiter (Co-chair)",
+      institute: "Fraunhofer Institute for Applied Solid State Physics",
+    },
+    {
+      name: "János Asbóth",
+      institute: "Budapest University of Technology and Economics",
+    },
+    {
+      name: "Bence Hetényi",
+      institute: "IBM Quantum, IBM Research Zurich",
+    },
+    {
+      name: "János Lazányi",
+      institute: "PCB Design",
+    },
+    {
+      name: "Patrick Maletinsky",
+      institute: "University of Basel",
+    },
+    {
+      name: "Boris Naydenov",
+      institute: "Helmholtz Center Berlin",
+    },
+    {
+      name: "Péter Rakyta",
+      institute: "Eötvös Loránd University",
+    },
+    {
+      name: "Özlem Salehi",
+      institute: "Algorithmiq",
+    },
+    {
+      name: "Antal Száva",
+      institute: "QC Design",
+    },
+    {
+      name: "Eszter Udvary",
+      institute: "Budapest University of Technology and Economics",
+    },
+    {
+      name: "Robert Zeier",
+      institute: "Forschungszentrum Jülich GmbH",
+    },
+    {
+      name: "Zoltán Zimborás",
+      institute: "HUN-REN Wigner Research Centre for Physics",
+    },
+  ],
+  local: [
+    {
+      name: "Ákos Csilling (Chair)",
+      institute: "Robert Bosch Kft.",
+    },
+    {
+      name: "Tamás Kozsik (Co-chair)",
+      institute: "Eötvös Loránd University",
+    },
+    {
+      name: "Szabolcs Jóczik",
+      institute: "Robert Bosch Kft.",
+    },
+    {
+      name: "Orsolya Kálmán",
+      institute: "HUN-REN Wigner Research Centre for Physics",
+    },
+    {
+      name: "Ágnes Kerek",
+      institute: "Eötvös Loránd University",
+    },
+    {
+      name: "Miklós Kozlovszky",
+      institute: "Óbuda University",
+    },
+    {
+      name: "Tamás Máray",
+      institute: "HUN-REN Institute for Computer Science and Control",
+    },
+    {
+      name: "András Pályi",
+      institute: "Budapest University of Technology and Economics",
+    },
+    {
+      name: "Zoltán Zimborás",
+      institute: "HUN-REN Wigner Research Centre for Physics",
+    },
+  ],
+  general: [
+    {
+      name: "Ákos Csilling (Chair)",
+      institute: "Robert Bosch Kft.",
+    },
+    {
+      name: "Tamás Kozsik (Co-chair)",
+      institute: "Eötvös Loránd University",
+    },
+  ],
+  cms: [
+    {
+      name: "Szabolcs Jóczik",
+      institute: "Robert Bosch Kft.",
+    },
+  ],
+};
+---
+
+<Layout title="Committees - ReAQCT 2024">
+  <main>
+    <section class="pt-12">
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="650"
+        height="650"
+        class="absolute right-[-5%] top-[5%] z-0 opacity-10"
+      />
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="400"
+        height="400"
+        class="absolute left-0 top-[50%] z-0 opacity-10"
+      />
+      <div class="container relative flex flex-col gap-12">
+        <div class="grid grid-cols-12 gap-6">
+          <div class="col-span-12 flex flex-col gap-4 px-4 lg:col-span-6">
+            <div class="flex flex-col gap-1">
+              <h2 class="text-lg font-bold uppercase text-text-title">
+                Program Committee
+              </h2>
+              <div class="flex flex-col gap-2">
+                {
+                  committeeChairs.program.map((member) => (
+                    <CommitteeMember
+                      name={member.name}
+                      institute={member.institute}
+                    />
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 flex flex-col gap-4 px-4 lg:col-span-6">
+            <div class="flex flex-col gap-1">
+              <h2 class="text-lg font-bold uppercase text-text-title">
+                Local Organizing Committee
+              </h2>
+              <div class="flex flex-col gap-2">
+                {
+                  committeeChairs.local.map((member) => (
+                    <CommitteeMember
+                      name={member.name}
+                      institute={member.institute}
+                    />
+                  ))
+                }
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h2 class="text-lg font-bold uppercase text-text-title">
+                General Chair
+              </h2>
+              <div class="flex flex-col gap-2">
+                {
+                  committeeChairs.general.map((member) => (
+                    <CommitteeMember
+                      name={member.name}
+                      institute={member.institute}
+                    />
+                  ))
+                }
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h2 class="text-lg font-bold uppercase text-text-title">
+                CMS Manager
+              </h2>
+              <div class="flex flex-col gap-2">
+                {
+                  committeeChairs.cms.map((member) => (
+                    <CommitteeMember
+                      name={member.name}
+                      institute={member.institute}
+                    />
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

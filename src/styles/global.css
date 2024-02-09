@@ -60,12 +60,16 @@ html {
   }
   
   .sponsors-table td, .sponsors-table th {
-    @apply py-2 px-2 text-left
+    @apply py-2 px-2 text-left;
+  }
+
+  .sponsors-table td:first-child {
+    @apply w-full;
   }
   
   .sponsors-table tr td:not(:first-child), .sponsors-table tr th:not(:first-child) {
     min-width: 130px;
-    @apply text-center border-r-[1px] border-solid border-[#161c3d]
+    @apply text-center border-r-[1px] border-solid border-[#161c3d];
   }
   
   .sponsors-table thead th:nth-child(2), .sponsors-table tr td:nth-child(2) {
@@ -76,13 +80,13 @@ html {
   
   .table-striped>tbody>tr:nth-child(odd)>td,
   .table-striped>tbody>tr:nth-child(odd)>th {
-      @apply bg-primary-indigolight
+      @apply bg-primary-indigolight;
   }
   
   @media (max-width: 1023.98px) {
     .sponsors-table tr td:not(:first-child), .sponsors-table tr th:not(:first-child) {
       min-width: 115px;
-      @apply text-center border-r-[1px] border-solid border-[#161c3d]
+      @apply text-center border-r-[1px] border-solid border-[#161c3d];
     }
   }
   
