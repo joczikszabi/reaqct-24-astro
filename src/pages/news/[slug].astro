@@ -1,0 +1,125 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Layout from "../../layouts/Layout.astro";
+import { formatDate } from "../../helpers";
+
+type StatiPathsReturnType = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function getStaticPaths() {
+  const respPaths = await fetch("https://cms.reaqct.org/index.php?graphql", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+        query newsLinks {
+          news {
+            nodes {
+              uri
+            }
+          }
+        }
+      `,
+    }),
+  });
+  const json = await respPaths.json();
+  const { news } = json.data;
+
+  let slugs: StatiPathsReturnType[] = [];
+  news.nodes.forEach((n: { uri: string }) => {
+    slugs.push({
+      params: {
+        slug: n.uri.slice(6, n.uri.length - 1),
+      },
+    });
+  });
+
+  console.log(`static news paths: ${slugs.map((n) => n.params.slug)}`);
+
+  return slugs;
+}
+
+const { slug } = Astro.params;
+
+const response = await fetch("https://cms.reaqct.org/index.php?graphql", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    query: `
+        query NewsItemQuery {
+          newsitem(id: "/news/${slug}", idType: URI) {
+            id
+            title
+            date
+            content
+            featuredImage {
+              node {
+                altText
+                sourceUrl
+              }
+            }
+            slug
+            link
+          }
+        }
+      `,
+  }),
+});
+
+const json = await response.json();
+const { newsitem } = json.data;
+---
+
+<Layout title=`Submission - ReAQCT 2024`>
+  <main>
+    <section class="pt-12">
+      <Image
+        src={import("../../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="650"
+        height="650"
+        class="absolute right-[-5%] top-[5%] z-0 opacity-10"
+      />
+      <Image
+        src={import("../../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="400"
+        height="400"
+        class="absolute left-[5%] top-[50%] z-0 opacity-10"
+      />
+      <div class="container relative flex flex-col gap-8">
+        <div class="w-full">
+          <a href="/news" class="flex items-center gap-2">
+            <Icon
+              name="mdi:chevron-left"
+              class="text-primary-orange text-3xl w-8 h-8 bg-white rounded-full bg-opacity-5"
+            />
+            <p>News</p>
+          </a>
+        </div>
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-2">
+            <p class="text-sm opacity-50">{formatDate(newsitem.date)}</p>
+            <h1
+              class="text-xl font-semibold uppercase text-text-title md:text-2xl"
+            >
+              {newsitem.title}
+            </h1>
+          </div>
+          <Image
+            src={newsitem.featuredImage.node.sourceUrl}
+            alt={newsitem.featuredImage.node.altText}
+            width="150"
+            height="150"
+            class="w-full h-[300px] object-cover rounded-md"
+          />
+          <p set:html={newsitem.content} />
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

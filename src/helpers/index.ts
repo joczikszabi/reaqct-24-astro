@@ -1,4 +1,5 @@
 
+  // Doesn't really work well with SSG websites since it will be hard-coded
   export function dateAgo(value: string): string {
     if (value) {
       const seconds = Math.floor((+new Date() - +new Date(value)) / 1000);
@@ -29,4 +30,16 @@
       }
     }
     return value;
+  }
+
+
+  export function formatDate(value: string): string {
+    const dateObj = new Date(value);
+    const dateItems = {
+      month: dateObj.toLocaleString('default', { month: 'long' }),
+      day: dateObj.getUTCDate(),
+      year: dateObj.getUTCFullYear(),
+    }
+
+    return `${dateItems.month} ${dateItems.day}, ${dateItems.year}`;
   }

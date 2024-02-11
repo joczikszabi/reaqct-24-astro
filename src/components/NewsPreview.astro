@@ -1,8 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import { dateAgo } from "../helpers";
+import { formatDate } from "../helpers";
 
 interface Props {
+  uri: string;
   title: string;
   thumbnailSourceUrl: string;
   thumbnailAlt: string;
@@ -10,26 +11,29 @@ interface Props {
   createdAt: string;
 }
 
-const { title, thumbnailSourceUrl, thumbnailAlt, previewText, createdAt } =
+const { uri, title, thumbnailSourceUrl, thumbnailAlt, previewText, createdAt } =
   Astro.props;
 ---
 
-<div class="flex gap-4 hover:bg-white/[.02] w-full rounded-md">
+<a
+  href={uri}
+  class="flex flex-col gap-2 hover:bg-white/[.02] w-full rounded-md col-span-12 md:col-span-6 xl:col-span-4"
+>
   <Image
     src={thumbnailSourceUrl}
     alt={thumbnailAlt}
     width="150"
     height="150"
-    class="w-[125px] md:w-[175px] h-[125px] md:h-[175px] rounded-md"
+    class="w-full h-[300px] object-cover rounded-md"
   />
-
-  <div class="flex flex-col h-125px md:h-[175px] py-2 w-full justify-between">
-    <div class="flex flex-col gap-1">
-      <h2 class="text-xl font-semibold text-text-title">{title}</h2>
-      <div class="text-sm w-fit h-[40px] md:h-[70px] overflow-hidden">
-        <p class="text-ellipsis" set:html={previewText} />
-      </div>
+  <div class="px-2 py-2 gap-2 flex flex-col">
+    <p class="text-sm opacity-50">{formatDate(createdAt)}</p>
+    <h2 class="font-semibold text-text-title">{title}</h2>
+    <div class="text-sm w-fit h-[40px] md:h-[70px] overflow-hidden">
+      <p
+        class="overflow-hidden text-ellipsis text-gray-6 [-webkit-box-orient:vertical] [-webkit-line-clamp:5] [display:-webkit-box]"
+        set:html={previewText}
+      />
     </div>
-    <p class="text-sm">{dateAgo(createdAt)}</p>
   </div>
-</div>
+</a>

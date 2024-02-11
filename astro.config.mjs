@@ -6,12 +6,7 @@ import vercel from '@astrojs/vercel/static';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tailwind(), icon({
-    iconDir: "src/assets/icons",
-    include: {
-      mdi: ["checkbox-marked-circle-outline"] // Loads only Material Design Icon's "account" SVG
-    }
-  })],
+  integrations: [react(), tailwind(), icon()],
   output: "static",
   adapter: vercel({
     webAnalytics: {
