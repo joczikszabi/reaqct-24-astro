@@ -55,6 +55,14 @@ const currentPath = new URL(Astro.request.url).pathname;
         >
           Submission
         </a>
+        <a
+          href="/news"
+          class={currentPath === "/news"
+            ? "font-semibold text-primary-orange"
+            : "text-text-normal hover:text-primary-orange active:text-primary-orange"}
+        >
+          News
+        </a>
         {
           /*
           <a class="hover:text-primary-orange active:text-primary-orange" href="/about">

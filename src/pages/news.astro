@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import moment from "moment";
+import NewsPreview from "../components/NewsPreview.astro";
+
+const response = await fetch("http://159.223.21.109/index.php?graphql", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    query: `
+        query postsQuery {
+            news {
+                nodes {
+                    id
+                    title
+                    content
+                    date
+                    uri
+                    slug
+                    featuredImage {
+                        node {
+                            altText
+                            sourceUrl
+                        }
+                    }
+                }
+            }
+        }
+      `,
+  }),
+});
+
+const json = await response.json();
+const { news } = json.data;
+
+type NewsItem = {
+  id: string;
+  title: string;
+  content: string;
+  date: string;
+  uri: string;
+  featuredImage: {
+    node: {
+      altText: string;
+      sourceUrl: string;
+    };
+  };
+};
+---
+
+<Layout title="Submission - ReAQCT 2024">
+  <main>
+    <section class="pt-12">
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="650"
+        height="650"
+        class="absolute right-[-5%] top-[5%] z-0 opacity-10"
+      />
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="400"
+        height="400"
+        class="absolute left-[5%] top-[50%] z-0 opacity-10"
+      />
+      <div class="container relative flex flex-col gap-12">
+        <div class="flex w-full flex-col gap-6">
+          <h1
+            class="text-xl font-semibold uppercase text-text-title md:text-2xl"
+          >
+            News
+          </h1>
+          <p>
+            Stay up to date with all the latest ReAQCT 2024 conference news and
+            updates!
+          </p>
+        </div>
+        <div class="flex flex-col gap-4">
+          {
+            news.nodes.map(function (newsitem: NewsItem) {
+              return (
+                <NewsPreview
+                  title={newsitem.title}
+                  thumbnailSourceUrl={newsitem.featuredImage.node.sourceUrl}
+                  thumbnailAlt={newsitem.featuredImage.node.altText}
+                  previewText={newsitem.content}
+                  createdAt={newsitem.date}
+                />
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
