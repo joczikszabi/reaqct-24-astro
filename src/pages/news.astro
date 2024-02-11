@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import NewsPreview from "../components/NewsPreview.astro";
 
-const response = await fetch("http://159.223.21.109/index.php?graphql", {
+const response = await fetch("https://cms.reaqct.org/index.php?graphql", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
