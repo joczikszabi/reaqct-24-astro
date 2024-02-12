@@ -1,10 +1,11 @@
 ---
 import { Image } from "astro:assets";
 const currentPath = new URL(Astro.request.url).pathname;
+console.log(currentPath);
 ---
 
 <header class="relative z-[500] flex h-[72px]">
-  <div class="container mx-auto flex justify-between px-2 text-sm">
+  <div class="container mx-auto flex justify-between px-2">
     <div class="flex items-center gap-4 text-text-title">
       <Image
         src={import("../assets/logos/logo_v1.png")}
@@ -33,7 +34,7 @@ const currentPath = new URL(Astro.request.url).pathname;
         }
         <a
           href="/sponsors"
-          class={currentPath === "/sponsors"
+          class={currentPath.startsWith("/sponsors")
             ? "font-semibold text-primary-orange"
             : "text-text-normal hover:text-primary-orange active:text-primary-orange"}
         >
@@ -41,7 +42,7 @@ const currentPath = new URL(Astro.request.url).pathname;
         </a>
         <a
           href="/committees"
-          class={currentPath === "/committees"
+          class={currentPath.startsWith("/committees")
             ? "font-semibold text-primary-orange"
             : "text-text-normal hover:text-primary-orange active:text-primary-orange"}
         >
@@ -49,7 +50,7 @@ const currentPath = new URL(Astro.request.url).pathname;
         </a>
         <a
           href="/submission"
-          class={currentPath === "/submission"
+          class={currentPath.startsWith("/submission")
             ? "font-semibold text-primary-orange"
             : "text-text-normal hover:text-primary-orange active:text-primary-orange"}
         >
@@ -59,7 +60,7 @@ const currentPath = new URL(Astro.request.url).pathname;
           /*
           <a
             href="/news"
-            class={currentPath === "/news"
+            class={currentPath.startsWith("/news")
               ? "font-semibold text-primary-orange"
               : "text-text-normal hover:text-primary-orange active:text-primary-orange"}
           >
