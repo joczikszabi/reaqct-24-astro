@@ -45,15 +45,15 @@ import Layout from "../layouts/Layout.astro";
         class="absolute left-[-5%] top-[50%] z-0 opacity-5"
       />
       <div class="container flex flex-col gap-6">
-        <h2 class="text-2xl font-bold uppercase text-text-title md:text-4xl">
-          Welcome to <span class="text-primary-orange">REAQCT 2024</span>
+        <h2 class="text-2xl font-bold text-text-title md:text-4xl">
+          WELCOME TO <span class="text-primary-orange">ReAQCT 2024</span>
         </h2>
         <p>
-          Recent Advances in Quantum Computing and Technology (
-          <span class="font-semibold text-primary-orange">ReAQCT</span>) is the
-          first in a new series of scientific conferences with the aim to bring
-          together scientists and industry experts working in the field of
-          quantum computing and quantum technology.
+          Recent Advances in Quantum Computing and Technology (<span
+            class="font-semibold text-primary-orange">ReAQCT</span
+          >) is the first in a new series of scientific conferences with the aim
+          to bring together scientists and industry experts working in the field
+          of quantum computing and quantum technology.
         </p>
       </div>
     </section>
@@ -131,9 +131,7 @@ import Layout from "../layouts/Layout.astro";
             class="my-4 flex min-w-[150px] max-w-[200px] flex-col items-center gap-4 text-center"
           >
             <Image
-              src={import(
-                "../assets/icons/quantum_algorithms_and_information.png"
-              )}
+              src={import("../assets/icons/quantum_sensing.png")}
               alt="Quantum Algorithms & Information icon"
               width="40"
               height="40"
@@ -215,6 +213,24 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </section>
     <section>
+      <div class="container relative flex flex-col gap-8">
+        <div class="flex flex-col gap-2">
+          <h2
+            class="text-xl font-semibold uppercase text-text-title md:text-2xl"
+          >
+            Keynote speakers
+          </h2>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2
+            class="text-xl font-semibold uppercase text-text-title md:text-2xl"
+          >
+            Industry speakers
+          </h2>
+        </div>
+      </div>
+    </section>
+    <section>
       <Image
         src={import("../assets/images/illustration_lg.png")}
         alt="ReAQCT illustration"
@@ -289,36 +305,18 @@ import Layout from "../layouts/Layout.astro";
             </div>
           </div>
           <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-4 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
+            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-6 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
           >
             <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
             </div>
             <div
               class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
             >
-              <Image src={import("../assets/logos/qnl.png")} alt="QNL logo" />
+              <Image src={import("../assets/logos/bme.png")} alt="BME logo" />
             </div>
             <div class="h-[1px] w-full bg-primary-secondary"></div>
             <div class="flex h-[100px] items-center justify-center">
-              <p>Quantum Information National Labratory</p>
-            </div>
-          </div>
-          <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-4 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
-          >
-            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
-            </div>
-            <div
-              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
-            >
-              <Image
-                src={import("../assets/logos/wigner.png")}
-                alt="Wigner logo"
-              />
-            </div>
-            <div class="h-[1px] w-full bg-primary-secondary"></div>
-            <div class="flex h-[100px] items-center justify-center">
-              <p>HUN-REN Wigner Research Centre for Physics</p>
+              <p>Budapest University of Technology and Economics</p>
             </div>
           </div>
           <div
@@ -334,6 +332,42 @@ import Layout from "../layouts/Layout.astro";
             <div class="h-[1px] w-full bg-primary-secondary"></div>
             <div class="flex h-[100px] items-center justify-center">
               <p>Eötvös Loránd University</p>
+            </div>
+          </div>
+          <div
+            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-6 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
+          >
+            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
+            </div>
+            <div
+              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
+            >
+              <Image
+                src={import("../assets/logos/sztaki_v2.png")}
+                alt="SZTAKI logo"
+              />
+            </div>
+            <div class="h-[1px] w-full bg-primary-secondary"></div>
+            <div class="flex h-[100px] items-center justify-center">
+              <p>HUN-REN SZTAKI</p>
+            </div>
+          </div>
+          <div
+            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-4 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
+          >
+            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
+            </div>
+            <div
+              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
+            >
+              <Image
+                src={import("../assets/logos/wigner_v2.png")}
+                alt="Wigner logo"
+              />
+            </div>
+            <div class="h-[1px] w-full bg-primary-secondary"></div>
+            <div class="flex h-[100px] items-center justify-center">
+              <p>HUN-REN Wigner Research Centre for Physics</p>
             </div>
           </div>
           <div
@@ -355,36 +389,18 @@ import Layout from "../layouts/Layout.astro";
             </div>
           </div>
           <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-6 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
+            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-4 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
           >
             <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
             </div>
             <div
               class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
             >
-              <Image src={import("../assets/logos/bme.png")} alt="BME logo" />
+              <Image src={import("../assets/logos/qnl.png")} alt="QNL logo" />
             </div>
             <div class="h-[1px] w-full bg-primary-secondary"></div>
             <div class="flex h-[100px] items-center justify-center">
-              <p>Budapest University of Technology and Economics</p>
-            </div>
-          </div>
-          <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-6 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
-          >
-            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
-            </div>
-            <div
-              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
-            >
-              <Image
-                src={import("../assets/logos/sztaki.png")}
-                alt="SZTAKI logo"
-              />
-            </div>
-            <div class="h-[1px] w-full bg-primary-secondary"></div>
-            <div class="flex h-[100px] items-center justify-center">
-              <p>HUN-REN SZTAKI</p>
+              <p>Quantum Information National Laboratory</p>
             </div>
           </div>
         </div>
