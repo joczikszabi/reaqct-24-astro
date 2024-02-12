@@ -41,6 +41,10 @@ html {
       text-wrap: balance;
     }
   }
+
+  ul li {
+    @apply my-1;
+  }
   
   
   .background-linear-gradient {
