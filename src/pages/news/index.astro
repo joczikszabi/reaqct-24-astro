@@ -64,8 +64,8 @@ type NewsItem = {
         height="400"
         class="absolute left-[5%] top-[50%] z-0 opacity-10"
       />
-      <div class="container relative flex flex-col gap-12">
-        <div class="flex w-full flex-col gap-6">
+      <div class="container relative flex flex-col gap-8">
+        <div class="flex w-full flex-col gap-2">
           <h1
             class="text-xl font-semibold uppercase text-text-title md:text-2xl"
           >
@@ -79,18 +79,19 @@ type NewsItem = {
         </div>
         <div class="grid grid-cols-12 gap-12">
           {
-            news.nodes.map(function (newsitem: NewsItem) {
-              return (
-                <NewsPreview
-                  uri={newsitem.uri}
-                  title={newsitem.title}
-                  thumbnailSourceUrl={newsitem.featuredImage.node.sourceUrl}
-                  thumbnailAlt={newsitem.featuredImage.node.altText}
-                  previewText={newsitem.content}
-                  createdAt={newsitem.date}
-                />
-              );
-            })
+            "nodes" in news &&
+              news.nodes.map(function (newsitem: NewsItem) {
+                return (
+                  <NewsPreview
+                    uri={newsitem.uri}
+                    title={newsitem.title}
+                    thumbnailSourceUrl={newsitem.featuredImage.node.sourceUrl}
+                    thumbnailAlt={newsitem.featuredImage.node.altText}
+                    previewText={newsitem.content}
+                    createdAt={newsitem.date}
+                  />
+                );
+              })
           }
         </div>
       </div>

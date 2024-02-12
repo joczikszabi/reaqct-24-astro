@@ -110,13 +110,6 @@ const { newsitem } = json.data;
               {newsitem.title}
             </h1>
           </div>
-          <Image
-            src={newsitem.featuredImage.node.sourceUrl}
-            alt={newsitem.featuredImage.node.altText}
-            width="150"
-            height="150"
-            class="w-full h-[300px] object-cover rounded-md"
-          />
           <p set:html={newsitem.content} />
         </div>
       </div>
