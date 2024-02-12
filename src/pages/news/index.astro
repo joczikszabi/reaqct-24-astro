@@ -77,7 +77,7 @@ type NewsItem = {
             > conference news and updates!
           </p>
         </div>
-        <div class="grid grid-cols-12 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
           {
             "nodes" in news &&
               news.nodes.map(function (newsitem: NewsItem) {
