@@ -76,7 +76,7 @@ html {
   }
 
   .sponsors-table td:first-child, .registration-table td:first-child {
-    @apply w-full;
+    @apply w-full text-text-title;
   }
   
   .sponsors-table tr td:not(:first-child), .sponsors-table tr th:not(:first-child), .registration-table tr td:not(:first-child), .registration-table tr th:not(:first-child) {
