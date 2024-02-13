@@ -38,8 +38,6 @@ export async function getStaticPaths() {
     });
   });
 
-  console.log(`static news paths: ${slugs.map((n) => n.params.slug)}`);
-
   return slugs;
 }
 
