@@ -1,0 +1,116 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Submission - ReAQCT 2024">
+  <main>
+    <section class="pt-12">
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="650"
+        height="650"
+        class="absolute right-[-5%] top-[5%] z-0 opacity-10"
+      />
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="400"
+        height="400"
+        class="absolute left-[5%] top-[50%] z-0 opacity-10"
+      />
+      <div class="container relative flex flex-col gap-12">
+        <div class="flex w-full flex-col gap-4">
+          <h1
+            class="text-xl font-semibold uppercase text-text-title md:text-2xl"
+          >
+            Registration
+          </h1>
+          <p>
+            The online registration to the conference is only possible via the
+            online registration platform until 27 March 2024. Kindly note that
+            everyone who wants to attend the conference or single sessions, must
+            create an account and register. If you create an account, you can
+            for instance check your registration or make additional programme
+            bookings later.
+          </p>
+        </div>
+        <div class="w-full flex justify-center">
+          <div class="text-right max-w-[400px]">
+            <table
+              class="registration-table table-auto text-sm md:block text-text-title"
+            >
+              <thead>
+                <th></th>
+                <th>Before<br />15 May</th>
+                <th>After<br />15 May</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Discounted</td>
+                  <td>€75</td>
+                  <td>€150</td>
+                </tr>
+                <tr>
+                  <td>Normal</td>
+                  <td>€150</td>
+                  <td>€250</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-xs mt-2">*VAT not included (27%)</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <h2 class="text-text-title font-semibold text-lg uppercase">
+            The Conference registration includes
+          </h2>
+          <ul class="list-disc ml-4">
+            <li class="mb-3 md:mb-0">Access to all sessions and tutorials.</li>
+            <li class="mb-3 md:mb-0">
+              Refreshments during coffee breaks and lunch during lunch breaks.
+            </li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-1">
+          <h2 class="text-text-title font-semibold text-lg uppercase">
+            Cancellation policy
+          </h2>
+          <ul class="list-disc ml-4">
+            <li class="mb-3 md:mb-0">
+              Your payment will be reimbursed if a cancellation is received
+              before May 29, 2024.
+            </li>
+            <li class="mb-3 md:mb-0">
+              If a cancellation is received between May 29, 2024 and June 15,
+              2024 - 50% of the registration fee will be reimbursed.
+            </li>
+            <li class="mb-3 md:mb-0">
+              No reimbursement will be made after June 15, 2024.
+            </li>
+            <li class="mb-3 md:mb-0">
+              For any cancellation an additional Administration Fee (30 euros)
+              will be charged.
+            </li>
+            <li class="mb-3 md:mb-0">
+              All refunds will be processed after the conference.
+            </li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-1">
+          <h2 class="text-text-title font-semibold text-lg uppercase">
+            Contact Us
+          </h2>
+          <p>
+            In case of any questions, please do not hesitate to contact the
+            Registration Office via email:
+            <span class="font-semibold text-primary-orange"
+              >registration@reaqct.org</span
+            >.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

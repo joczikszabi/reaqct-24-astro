@@ -62,16 +62,24 @@ html {
     margin-bottom: 5rem;
     z-index: 100;
   }
+
+  .registration-table thead th, .registration-table tbody td {
+    @apply font-medium;
+  }
+
+  .registration-table tbody {
+    @apply border-y-[1px] border-solid border-primary-orange;
+  }
   
-  .sponsors-table td, .sponsors-table th {
+  .sponsors-table td, .sponsors-table th, .registration-table td, .registration-table th {
     @apply py-3 px-4 text-left;
   }
 
-  .sponsors-table td:first-child {
+  .sponsors-table td:first-child, .registration-table td:first-child {
     @apply w-full;
   }
   
-  .sponsors-table tr td:not(:first-child), .sponsors-table tr th:not(:first-child) {
+  .sponsors-table tr td:not(:first-child), .sponsors-table tr th:not(:first-child), .registration-table tr td:not(:first-child), .registration-table tr th:not(:first-child) {
     min-width: 135px;
     @apply text-center border-r-[1px] border-solid border-[#161c3d];
   }

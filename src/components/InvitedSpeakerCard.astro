@@ -2,16 +2,21 @@
 interface Props {
   name: string;
   institute: string;
+  bio: string;
 }
 
-const { name, institute } = Astro.props;
+const { name, institute, bio } = Astro.props;
 ---
 
-<div
-  class="relative flex flex-col gap-1 rounded-sm py-1 px-4 hover:bg-white/[.01]"
->
-  <div class="absolute left-0 top-[15%] h-[70%] w-[2px] bg-primary-orange">
+<div class="flex gap-0">
+  <slot />
+  <div
+    class="relative flex flex-col gap-4 rounded-sm py-1 px-4 hover:bg-white/[.01]"
+  >
+    <div class="flex flex-col gap-0">
+      <h3 class="font-semibold text-text-title text-lg">{name}</h3>
+      <p class="text-sm">{institute}</p>
+    </div>
+    <p class="text-sm">{bio}</p>
   </div>
-  <h3 class="font-semibold text-text-title">{name}</h3>
-  <h4 class="text-sm">{institute}</h4>
 </div>
