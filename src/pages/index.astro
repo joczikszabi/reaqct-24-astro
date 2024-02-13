@@ -1,6 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import InvitedSpeakerCard from "../components/InvitedSpeakerCard.astro";
+import Organiser from "../components/Organiser.astro";
+
+import RobertBoschLogo from "../assets/logos/bosch.png";
 ---
 
 <Layout title="ReAQCT 2024">
@@ -212,7 +216,51 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </div>
     </section>
-
+    <section>
+      <div class="container relative flex flex-col gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="flex flex-col gap-4">
+            <h2
+              class="text-xl font-semibold uppercase text-text-title md:text-2xl"
+            >
+              Keynote speakers
+            </h2>
+            <div class="flex flex-col gap-1">
+              <InvitedSpeakerCard
+                name="Natalia Ares"
+                institute="University of Oxford"
+              />
+              <InvitedSpeakerCard
+                name="Thomas Strohm"
+                institute="Robert Bosch GmbH"
+              />
+              <InvitedSpeakerCard
+                name="Frank Wilhelm-Mauch"
+                institute="Forschungszentrum Jülich"
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <h2
+              class="text-xl font-semibold uppercase text-text-title md:text-2xl"
+            >
+              Industry speakers
+            </h2>
+            <div class="flex flex-col gap-1">
+              <InvitedSpeakerCard
+                name="Adam Gali"
+                institute="HUN-REN Wigner Research Centre for Physics"
+              />
+              <InvitedSpeakerCard name="Matteo Rossi" institute="Algorithmq" />
+              <InvitedSpeakerCard
+                name="James Wootton"
+                institute="IBM Research Zurich"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section>
       <Image
         src={import("../assets/images/illustration_lg.png")}
@@ -267,125 +315,57 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </div>
         <div
-          class="flex flex-wrap justify-center gap-4 text-center font-semibold leading-[20px] tracking-tight text-primary-indigo md:leading-[24px] md:tracking-normal"
+          class="flex flex-wrap justify-center gap-2 text-center font-semibold leading-[20px] tracking-tight text-primary-indigo md:leading-[24px] md:tracking-normal"
         >
-          <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-4 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
-          >
-            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
-            </div>
-            <div
-              class="relative flex h-[30px] w-[150px] items-center justify-center md:h-[40px]"
-            >
-              <Image
-                src={import("../assets/logos/bosch.png")}
-                alt="Bosch logo"
-              />
-            </div>
-            <div class="h-[1px] w-full bg-primary-secondary"></div>
-            <div class="flex h-[100px] items-center justify-center">
-              <p>Robert Bosch Kft.</p>
-            </div>
-          </div>
-          <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-6 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
-          >
-            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
-            </div>
-            <div
-              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
-            >
-              <Image src={import("../assets/logos/bme.png")} alt="BME logo" />
-            </div>
-            <div class="h-[1px] w-full bg-primary-secondary"></div>
-            <div class="flex h-[100px] items-center justify-center">
-              <p>Budapest University of Technology and Economics</p>
-            </div>
-          </div>
-          <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-4 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
-          >
-            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
-            </div>
-            <div
-              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
-            >
-              <Image src={import("../assets/logos/elte.png")} alt="ELTE logo" />
-            </div>
-            <div class="h-[1px] w-full bg-primary-secondary"></div>
-            <div class="flex h-[100px] items-center justify-center">
-              <p>Eötvös Loránd University</p>
-            </div>
-          </div>
-          <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-6 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
-          >
-            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
-            </div>
-            <div
-              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
-            >
-              <Image
-                src={import("../assets/logos/sztaki_v2.png")}
-                alt="SZTAKI logo"
-              />
-            </div>
-            <div class="h-[1px] w-full bg-primary-secondary"></div>
-            <div class="flex h-[100px] items-center justify-center">
-              <p>HUN-REN SZTAKI</p>
-            </div>
-          </div>
-          <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-4 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
-          >
-            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
-            </div>
-            <div
-              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
-            >
-              <Image
-                src={import("../assets/logos/wigner_v2.png")}
-                alt="Wigner logo"
-              />
-            </div>
-            <div class="h-[1px] w-full bg-primary-secondary"></div>
-            <div class="flex h-[100px] items-center justify-center">
-              <p>HUN-REN Wigner Research Centre for Physics</p>
-            </div>
-          </div>
-          <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-4 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
-          >
-            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
-            </div>
-            <div
-              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
-            >
-              <Image
-                src={import("../assets/logos/obuda.jpeg")}
-                alt="Obuda University logo"
-              />
-            </div>
-            <div class="h-[1px] w-full bg-primary-secondary"></div>
-            <div class="flex h-[100px] items-center justify-center">
-              <p>Óbuda University</p>
-            </div>
-          </div>
-          <div
-            class="relative flex h-[175px] w-[175px] flex-col items-center justify-start gap-2 overflow-hidden rounded-sm bg-[#FFF9F5] px-2 pt-4 md:h-[250px] md:w-[225px] md:gap-4 md:px-4 md:pt-8"
-          >
-            <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange">
-            </div>
-            <div
-              class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
-            >
-              <Image src={import("../assets/logos/qnl.png")} alt="QNL logo" />
-            </div>
-            <div class="h-[1px] w-full bg-primary-secondary"></div>
-            <div class="flex h-[100px] items-center justify-center">
-              <p>Quantum Information National Laboratory</p>
-            </div>
-          </div>
+          <Organiser name="Robert Bosch Kft.">
+            <Image
+              src={import("../assets/logos/bosch.png")}
+              alt="Robert Bosch Kft. logo"
+              class="w-[140px] md:w-[175px]"
+            />
+          </Organiser>
+          <Organiser name="Budapest University of Technology and Economics">
+            <Image
+              src={import("../assets/logos/bme.png")}
+              alt="Budapest University of Technology and Economics logo"
+              class="w-[140px] md:w-[150px]"
+            />
+          </Organiser>
+          <Organiser name="Eötvös Loránd University">
+            <Image
+              src={import("../assets/logos/elte.png")}
+              alt="Eötvös Loránd University logo"
+              class="w-[140px] md:w-[175px]"
+            />
+          </Organiser>
+          <Organiser name="HUN-REN SZTAKI">
+            <Image
+              src={import("../assets/logos/sztaki.png")}
+              alt="HUN-REN SZTAKI logo"
+              class="w-[140px] md:w-[175px]"
+            />
+          </Organiser>
+          <Organiser name="HUN-REN Wigner Research Centre for Physics">
+            <Image
+              src={import("../assets/logos/wigner.png")}
+              alt="HUN-REN Wigner Research Centre for Physics logo"
+              class="w-[140px] md:w-[175px]"
+            />
+          </Organiser>
+          <Organiser name="Óbuda University">
+            <Image
+              src={import("../assets/logos/obuda.jpeg")}
+              alt="Óbuda University logo"
+              class="w-[140px] md:w-[175px]"
+            />
+          </Organiser>
+          <Organiser name="Quantum Information National Laboratory">
+            <Image
+              src={import("../assets/logos/qnl.png")}
+              alt="Quantum Information National Laboratory logo"
+              class="w-[140px] md:w-[175px]"
+            />
+          </Organiser>
         </div>
       </div>
     </section>
