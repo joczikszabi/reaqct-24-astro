@@ -72,7 +72,7 @@ html {
   }
   
   .sponsors-table tr td:not(:first-child), .sponsors-table tr th:not(:first-child) {
-    min-width: 130px;
+    min-width: 135px;
     @apply text-center border-r-[1px] border-solid border-[#161c3d];
   }
   
