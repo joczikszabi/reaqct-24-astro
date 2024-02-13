@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import InvitedSpeakerCard from "../components/InvitedSpeakerCard.astro";
+import KeynoteSpeakerCard from "../components/KeynoteSpeakerCard.astro";
 import IndustryInvitedCard from "../components/IndustryInvitedTalk.astro";
 import Organiser from "../components/Organiser.astro";
 ---
@@ -47,8 +47,8 @@ import Organiser from "../components/Organiser.astro";
         height="1000"
         class="absolute left-[-5%] top-[50%] z-0 opacity-5"
       />
-      <div class="container flex flex-col gap-6">
-        <h2 class="text-2xl font-bold text-text-title md:text-4xl">
+      <div class="container flex flex-col gap-2">
+        <h2 class="text-xl font-bold text-text-title md:text-4xl">
           WELCOME TO <span class="text-primary-orange">ReAQCT 2024</span>
         </h2>
         <p>
@@ -224,33 +224,30 @@ import Organiser from "../components/Organiser.astro";
         height="750"
         class="absolute right-[-5%] top-[10%] z-0 opacity-10"
       />
-      <div class="container">
-        <div class="flex flex-col gap-4 sm:mb-[5rem] mb-0">
-          <h2
-            class="text-xl font-semibold uppercase text-text-title md:text-2xl"
-          >
-            Keynote speakers
-          </h2>
-          <div class="flex flex-col gap-4">
-            <InvitedSpeakerCard
-              name="Natalia Ares"
-              institute="University of Oxford"
-              bio="Natalia Ares is an Associate Professor at University of Oxford. She works on experiments aimed to advance quantum technologies, \
+      <div class="container flex flex-col gap-4">
+        <h2 class="text-xl font-semibold uppercase text-text-title md:text-2xl">
+          Keynote speakers
+        </h2>
+        <div class="flex flex-col gap-8 xl:gap-4">
+          <KeynoteSpeakerCard
+            name="Natalia Ares"
+            institute="University of Oxford"
+            bio="Natalia Ares is an Associate Professor at University of Oxford. She works on experiments aimed to advance quantum technologies, \
               with a focus on artificial intelligence for quantum device control and quantum thermodynamics. During her PhD, she focused on the \
               development of spin qubit devices for quantum computing at CEA Grenoble, France. She completed her undergraduate studies in physics\
               and a master equivalent in the theory of quantum chaos at University of Buenos Aires, Argentina."
-            >
-              <Image
-                src={import("../assets/images/keynote_natalia_ares.jpg")}
-                alt="Natalia Ares"
-                class="w-[325px] h-[325px] object-cover rounded-md"
-              />
-            </InvitedSpeakerCard>
+          >
+            <Image
+              src={import("../assets/images/keynote_natalia_ares.jpg")}
+              alt="Natalia Ares"
+              class="w-[325px] h-[325px] object-cover rounded-md"
+            />
+          </KeynoteSpeakerCard>
 
-            <InvitedSpeakerCard
-              name="Frank Wilhelm-Mauch"
-              institute="Forschungszentrum Jülich"
-              bio="Frank Wilhelm-Mauch is the director of Quantum Computational Analytics at Forschungszentrum Jülich, professor of theoretical \
+          <KeynoteSpeakerCard
+            name="Frank Wilhelm-Mauch"
+            institute="Forschungszentrum Jülich"
+            bio="Frank Wilhelm-Mauch is the director of Quantum Computational Analytics at Forschungszentrum Jülich, professor of theoretical \
               physics at Saarland University, and the coordinator of the OpenSuperQPlus project within the European Quantum Technology Flagship. \
               After obtaining his PhD in theoretical solid-state physics from the University of Karlsruhe (now KIT), he began to research on quantum \
               computers in 1999 as a postdoctoral researcher at Delft University of Technology in the Netherlands. He completed his habilitation at \
@@ -258,22 +255,22 @@ import Organiser from "../components/Organiser.astro";
               2011, he returned to Germany to a professorship in theoretical physics at Saarland University, and in 2020 he became the Founding Director \
               of the Institute for Quantum Computational Analytics at the Research Institute Jülich. His field of work is the theory and modeling of \
               quantum computers with superconducting circuits at different levels between devices and applications."
-            >
-              <Image
-                src={import("../assets/images/keynote_frank_wilhelm_mauch.jpg")}
-                alt="Frank Wilhelm-Mauch"
-                class="w-[325px] h-[325px] object-cover rounded-md"
-              />
-            </InvitedSpeakerCard>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2">
-          <h2
-            class="text-xl font-semibold uppercase text-text-title md:text-2xl"
           >
-            Invited speakers
-          </h2>
+            <Image
+              src={import("../assets/images/keynote_frank_wilhelm_mauch.jpg")}
+              alt="Frank Wilhelm-Mauch"
+              class="w-[325px] h-[325px] object-cover rounded-md"
+            />
+          </KeynoteSpeakerCard>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container flex flex-col gap-2">
+        <h2 class="text-xl font-semibold uppercase text-text-title md:text-2xl">
+          Invited speakers
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           <div class="flex flex-col gap-1">
             <IndustryInvitedCard
               name="Adam Gali"

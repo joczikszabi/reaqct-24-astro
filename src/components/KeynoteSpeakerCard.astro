@@ -8,10 +8,10 @@ interface Props {
 const { name, institute, bio } = Astro.props;
 ---
 
-<div class="flex gap-0">
+<div class="flex flex-col xl:flex-row xl:gap-0 gap-4">
   <slot />
   <div
-    class="relative flex flex-col gap-4 rounded-sm py-1 px-4 hover:bg-white/[.01]"
+    class="relative flex flex-col gap-4 rounded-sm py-1 xl:px-4 hover:bg-white/[.01]"
   >
     <div class="flex flex-col gap-0">
       <h3 class="font-semibold text-text-title text-lg">{name}</h3>
