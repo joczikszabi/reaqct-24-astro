@@ -251,6 +251,27 @@ import Organiser from "../components/Organiser.astro";
           </KeynoteSpeakerCard>
 
           <KeynoteSpeakerCard
+            name="Thomas Strohm"
+            institute="Robert Bosch GmbH"
+            bio="Dr. Thomas Strohm received his PhD in 1999 at the MPI for Solid State Research in Stuttgart where he did theoretical work on high-temperature superconductors. \
+            Thomas then joined the Corporate Research division of Robert Bosch GmbH and worked for more than 10 years in software engineering research and as a system and software architect. \
+            In 2013, he started building up the research activities on quantum technologies at Bosch. Currently, Thomas is Chief Expert for Quantum Technologies at Bosch. \
+            Thomas until recently contributed to two EU-funded projects, the Quantum Flagship's Coordination and Support Action QFlag and QRANGE, a project for quantum random number generators. \
+            In 2020, he was a key person in establishing the European Quantum Industry Consortium (QuIC), where he acts as a vice president and work group leader and also represents QuIC in the \
+            Strategic Advisory Board of the Quantum Flagship. Thomas is also part of the steering committee of the German Quantum Technology and Applications Consortium (QUTAC)."
+          >
+            <Image
+              src={import("../assets/images/keynote_thomas_strohm.jpg")}
+              alt="Frank Wilhelm-Mauch"
+              widths={[720, 1080, 1440]}
+              sizes={`(max-width: 360px) 720px, (max-width: 720px) 1080px, (max-width: 1440px) 1440px`}
+              loading="lazy"
+              decoding="async"
+              class="w-[325px] h-[325px] object-cover rounded-md"
+            />
+          </KeynoteSpeakerCard>
+
+          <KeynoteSpeakerCard
             name="Frank Wilhelm-Mauch"
             institute="Forschungszentrum Jülich"
             bio="Frank Wilhelm-Mauch is the director of Quantum Computational Analytics at Forschungszentrum Jülich, professor of theoretical \
