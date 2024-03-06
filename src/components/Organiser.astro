@@ -1,24 +1,27 @@
 ---
-import { Image } from "astro:assets";
-
 interface Props {
   name: string;
+  url: string;
 }
 
-const { name } = Astro.props;
+const { name, url } = Astro.props;
 ---
 
-<div
-  class="relative flex h-[165px] w-[165px] flex-col items-center justify-start gap-2 overflow-hidden rounded-md bg-[#FFF9F5] px-2 pt-8 md:h-[250px] md:w-[225px] md:gap-4 md:px-4"
->
-  <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange"></div>
+<a href={url} target="_blank" class="group">
   <div
-    class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
+    class="relative flex h-[165px] w-[165px] flex-col items-center justify-start gap-2 overflow-hidden rounded-md bg-[#FFF9F5] px-2 pt-8 md:h-[250px] md:w-[225px] md:gap-4 md:px-4"
   >
-    <slot />
+    <div class="absolute top-0 h-[7.5px] w-full bg-primary-orange"></div>
+    <div
+      class="relative flex h-[30px] w-full items-center justify-center md:h-[40px]"
+    >
+      <slot />
+    </div>
+    <div class="h-[1px] w-full bg-primary-secondary"></div>
+    <div
+      class="flex h-[100px] items-center justify-center text-sm md:text-base"
+    >
+      <p>{name}</p>
+    </div>
   </div>
-  <div class="h-[1px] w-full bg-primary-secondary"></div>
-  <div class="flex h-[100px] items-center justify-center text-sm md:text-base">
-    <p>{name}</p>
-  </div>
-</div>
+</a>

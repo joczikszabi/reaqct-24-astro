@@ -14,8 +14,6 @@ import Organiser from "../components/Organiser.astro";
         <Image
           src={import("../assets/images/home_background_image.png")}
           alt="Home background Image"
-          loading="lazy"
-          decoding="async"
           class="absolute left-0 top-0 h-screen w-full z-0 object-cover"
         />
       </div>
@@ -301,7 +299,9 @@ import Organiser from "../components/Organiser.astro";
         <h2 class="text-xl font-semibold uppercase text-text-title md:text-2xl">
           Invited speakers
         </h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-1 xl:gap-4"
+        >
           <IndustryInvitedCard
             name="Adam Gali"
             institute="HUN-REN Wigner Research Centre for Physics"
@@ -377,74 +377,86 @@ import Organiser from "../components/Organiser.astro";
         <div
           class="flex flex-wrap justify-center gap-2 text-center font-semibold leading-[20px] tracking-tight text-primary-indigo md:leading-[24px] md:tracking-normal"
         >
-          <Organiser name="Robert Bosch Kft.">
+          <Organiser name="Robert Bosch Kft." url="https://www.bosch.hu/">
             <Image
               src={import("../assets/logos/bosch.png")}
               alt="Robert Bosch Kft. logo"
-              width="250"
+              width="360"
               loading="lazy"
               decoding="async"
-              class="w-[140px] md:w-[175px]"
+              class="w-[120px] md:w-[150px] group-hover:w-[130px] md:group-hover:w-[160px] mb-2 transition duration-150 ease-in-out"
             />
           </Organiser>
-          <Organiser name="Budapest University of Technology and Economics">
+          <Organiser
+            name="Budapest University of Technology and Economics"
+            url="https://www.bme.hu/?language=en"
+          >
             <Image
               src={import("../assets/logos/bme.png")}
               alt="Budapest University of Technology and Economics logo"
-              width="250"
+              width="360"
               loading="lazy"
               decoding="async"
-              class="w-[140px] md:w-[150px]"
+              class="w-[120px] md:w-[150px] group-hover:w-[130px] md:group-hover:w-[160px] mb-2 transition duration-150 ease-in-out"
             />
           </Organiser>
-          <Organiser name="Eötvös Loránd University">
+          <Organiser
+            name="Eötvös Loránd University"
+            url="https://www.elte.hu/en/"
+          >
             <Image
               src={import("../assets/logos/elte.png")}
               alt="Eötvös Loránd University logo"
-              width="250"
+              width="360"
               loading="lazy"
               decoding="async"
-              class="w-[140px] md:w-[175px]"
+              class="w-[140px] md:w-[175px] group-hover:w-[150px] md:group-hover:w-[185px] mb-2 transition duration-150 ease-in-out"
             />
           </Organiser>
-          <Organiser name="HUN-REN SZTAKI">
+          <Organiser name="HUN-REN SZTAKI" url="https://sztaki.hun-ren.hu/en">
             <Image
               src={import("../assets/logos/sztaki.png")}
               alt="HUN-REN SZTAKI logo"
-              width="250"
+              width="360"
               loading="lazy"
               decoding="async"
-              class="w-[140px] md:w-[175px]"
+              class="w-[140px] md:w-[175px] group-hover:w-[150px] md:group-hover:w-[185px] mb-2 transition duration-150 ease-in-out"
             />
           </Organiser>
-          <Organiser name="HUN-REN Wigner Research Centre for Physics">
+          <Organiser
+            name="HUN-REN Wigner Research Centre for Physics"
+            url="https://wigner.hu/en"
+          >
             <Image
               src={import("../assets/logos/wigner.png")}
               alt="HUN-REN Wigner Research Centre for Physics logo"
-              width="250"
+              width="360"
               loading="lazy"
               decoding="async"
-              class="w-[140px] md:w-[175px]"
+              class="w-[140px] md:w-[175px] group-hover:w-[150px] md:group-hover:w-[185px] mb-2 transition duration-150 ease-in-out"
             />
           </Organiser>
-          <Organiser name="Óbuda University">
+          <Organiser name="Óbuda University" url="https://uni-obuda.hu/en/">
             <Image
               src={import("../assets/logos/obuda.jpeg")}
               alt="Óbuda University logo"
-              width="250"
+              width="360"
               loading="lazy"
               decoding="async"
-              class="w-[140px] md:w-[175px]"
+              class="w-[140px] md:w-[175px] group-hover:w-[150px] md:group-hover:w-[185px] mb-2 transition duration-150 ease-in-out"
             />
           </Organiser>
-          <Organiser name="Quantum Information National Laboratory">
+          <Organiser
+            name="Quantum Information National Laboratory"
+            url="https://qi.nemzetilabor.hu/"
+          >
             <Image
               src={import("../assets/logos/qnl.png")}
               alt="Quantum Information National Laboratory logo"
-              width="250"
+              width="360"
               loading="lazy"
               decoding="async"
-              class="w-[140px] md:w-[175px]"
+              class="w-[140px] md:w-[175px] group-hover:w-[150px] md:group-hover:w-[185px] mb-2 transition duration-150 ease-in-out"
             />
           </Organiser>
         </div>
