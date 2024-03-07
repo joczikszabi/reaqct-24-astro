@@ -13,7 +13,7 @@ export default function AbstractSubmissionForm() {
             First Name
           </label>
           <input
-            class="appearance-none block w-full bg-gray-200 text-primary-indigo border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            class="appearance-none block w-full bg-gray-200 text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-first-name"
             type="text"
             placeholder="First name"
@@ -27,7 +27,7 @@ export default function AbstractSubmissionForm() {
             Last Name
           </label>
           <input
-            class="appearance-none block w-full bg-gray-200 text-primary-indigo border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            class="appearance-none block w-full bg-gray-200 text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-last-name"
             type="text"
             placeholder="Last name"
@@ -43,7 +43,7 @@ export default function AbstractSubmissionForm() {
             Email
           </label>
           <input
-            class="appearance-none block w-full bg-gray-200 border text-primary-indigo border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            class="appearance-none block w-full bg-gray-200 border text-primary-indigo border-gray-200 rounded-md py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-email"
             type="text"
             placeholder="Your email address"
@@ -60,7 +60,7 @@ export default function AbstractSubmissionForm() {
           </label>
           <div class="relative">
             <select
-              class="block appearance-none w-full bg-gray-200 border text-primary-indigo border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              class="block appearance-none w-full bg-gray-200 border text-primary-indigo border-gray-200 py-2 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
             >
               <option>Quantum algorithms & Information</option>
@@ -94,7 +94,7 @@ export default function AbstractSubmissionForm() {
       </div>
       <div class="flex flex-wrap -mx-3 mb-4">
       <div class="w-full px-3">
-          <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-primary-orange ring-primary-orangee bg-gray-200 border-gray-300 rounded focus:ring-primary-orange focus:ring-2"/>
+          <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-primary-orange ring-primary-orangee bg-gray-200 border-gray-300 rounded-md focus:ring-primary-orange focus:ring-2"/>
           <label for="checked-checkbox" class="uppercase tracking-wide text-text-normal text-xs font-semibold ms-2">I have read and agree to the{' '}
             <a class="font-semibold text-primary-orange underline" href="#">Terms of Service</a>{' '}
             and{' '}
@@ -103,10 +103,10 @@ export default function AbstractSubmissionForm() {
         </div>
       </div>
       <button
-        class="flex-shrink-0 bg-primary-orange border-primary-orange text-sm border-2 text-primary-indigo font-semibold py-2 px-4 rounded mt-2"
+        class="flex-shrink-0 hover:bg-opacity-5 hover:bg-white border-primary-orange text-sm border-2 text-text-title font-semibold py-2 px-12 rounded-md mt-2"
         type="button"
       >
-        Submit abstract
+        Submit
       </button>
     </form>
   )

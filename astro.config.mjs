@@ -7,7 +7,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tailwind(), icon(), preact()],
+  integrations: [react(), tailwind(), icon()],
   output: "static",
   adapter: vercel({
     webAnalytics: {
