@@ -1,9 +1,57 @@
-import { useState } from 'preact/hooks';
+import React, { useState, useRef } from 'react';
+import { FileInput, Label } from 'flowbite-react';
 
 export default function AbstractSubmissionForm() {
 
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    topic: ''
+  });
+
+  const [abstractFile, setAbstractFile] = useState();
+  const [checked, setChecked] = React.useState(false);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  function handleFileChange(e) {
+    setAbstractFile(e.target.files[0]);
+    console.log(abstractFile)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const postData = new FormData();
+    postData.append('firstName', formData.firstName);
+    postData.append('lastName', formData.lastName);
+    postData.append('email', formData.email);
+    postData.append('topic', formData.topic);
+    postData.append('isTermsAccepted', checked);
+    postData.append('abstractFile', abstractFile)
+
+    fetch('reaqct24-backend.azurewebsites.net/api/abstract', {
+      method: 'POST',
+      body: postData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
-    <form class="w-full">
+    <form class="w-full" onSubmit={handleSubmit}>
       <div class="flex flex-wrap -mx-3 mb-4">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label
@@ -15,8 +63,11 @@ export default function AbstractSubmissionForm() {
           <input
             class="appearance-none block w-full bg-gray-200 text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-first-name"
+            name="firstName"
             type="text"
             placeholder="First name"
+            value={formData.firstName}
+            onChange={handleInputChange}
           />
         </div>
         <div class="w-full md:w-1/2 px-3">
@@ -29,8 +80,11 @@ export default function AbstractSubmissionForm() {
           <input
             class="appearance-none block w-full bg-gray-200 text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-last-name"
+            name="lastName"
             type="text"
             placeholder="Last name"
+            value={formData.lastName}
+            onChange={handleInputChange}
           />
         </div>
       </div>
@@ -45,8 +99,11 @@ export default function AbstractSubmissionForm() {
           <input
             class="appearance-none block w-full bg-gray-200 border text-primary-indigo border-gray-200 rounded-md py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             id="grid-email"
+            name="email"
             type="text"
             placeholder="Your email address"
+            value={formData.email}
+            onChange={handleInputChange}
           />
         </div>
       </div>
@@ -60,14 +117,18 @@ export default function AbstractSubmissionForm() {
           </label>
           <div class="relative">
             <select
-              class="block appearance-none w-full bg-gray-200 border text-primary-indigo border-gray-200 py-2 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              class="mb-3 block appearance-none w-full bg-gray-200 border border-gray-200 text-primary-indigo  py-2 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-state"
+              name="topic"
+              value={formData.topic}
+              onChange={handleInputChange}
             >
               <option>Quantum algorithms & Information</option>
               <option>Quantum Error Correction</option>
               <option>Quantum Software Engineering</option>
               <option>HPC & Quantum Computing</option>
               <option>Quantum Sensing</option>
+              <option>Other</option>
             </select>
           </div>
         </div>
@@ -76,26 +137,28 @@ export default function AbstractSubmissionForm() {
         <div class="w-full px-3">
           <label
             class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
-            for="grid-dropzone-file"
-          >
-            Abstract paper
+            for="file_input">
+              Abstract paper
           </label>
-          <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-56 border-2 border-gray-200 border-dashed rounded-lg cursor-pointer bg-gray-200 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                </svg>
-                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">PDF (MAX. 10MB)</p>
-            </div>
-            <input id="dropzone-file" type="file" class="hidden" />
-          </label>
+          <input 
+            class="block w-full bg-gray-200 border text-primary-indigo border-gray-200 rounded-md mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            aria-describedby="file_input_help"
+            id="file_input"
+            type="file"
+            onChange={handleFileChange}/>
+          <p class="mt-1 text-xs text-gray-400" id="file_input_help">PDF (MAX. 10Mb).</p>
         </div>
       </div>
       <div class="flex flex-wrap -mx-3 mb-4">
       <div class="w-full px-3">
-          <input checked id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-primary-orange ring-primary-orangee bg-gray-200 border-gray-300 rounded-md focus:ring-primary-orange focus:ring-2"/>
-          <label for="checked-checkbox" class="uppercase tracking-wide text-text-normal text-xs font-semibold ms-2">I have read and agree to the{' '}
+          <input
+            class="w-4 h-4 text-primary-orange ring-primary-orangee bg-gray-200 border-gray-300 rounded-md focus:ring-primary-orange focus:ring-2"
+            id="checked-checkbox" 
+            type="checkbox" 
+            name="isTermsAccepted"
+            defaultChecked={checked}
+            onChange={() => setChecked((state) => !state)} />
+          <label for="checked-checkbox" class="text-text-title text-sm ms-2">I have read and agree to the{' '}
             <a class="font-semibold text-primary-orange underline" href="#">Terms of Service</a>{' '}
             and{' '}
             <a class="font-semibold text-primary-orange underline" href="#">Privacy Policy</a>
@@ -103,10 +166,10 @@ export default function AbstractSubmissionForm() {
         </div>
       </div>
       <button
-        class="flex-shrink-0 hover:bg-opacity-5 hover:bg-white border-primary-orange text-sm border-2 text-text-title font-semibold py-2 px-12 rounded-md mt-2"
-        type="button"
+        class="flex-shrink-0 hover:bg-opacity-5 hover:bg-white border-primary-orange text-sm border-[2px] text-text-normal hover:text-text-title font-semibold py-2 px-6 rounded-md mt-2"
+        type="submit"
       >
-        Submit
+        Submit your abstract
       </button>
     </form>
   )

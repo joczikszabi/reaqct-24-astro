@@ -1,100 +1,64 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import Header from "../components/Header.astro";
+import LayoutAbstractSubmit from "../layouts/LayoutAbstractSubmit.astro";
 import AbstractSubmissionForm from "../components/AbstractSubmissionForm.jsx";
-import "@fontsource-variable/montserrat";
-import "../styles/global.css";
-
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Recent Advances in Quantum Computing and Technology"
-    />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="title" property="og:title" content="ReAQCT 2024" />
-    <meta
-      name="description"
-      property="og:description"
-      content="Recent Advances in Quantum Computing and Technology"
-    />
-    <meta name="type" property="og:type" content="website" />
-    <meta
-      name="image"
-      property="og:image"
-      content="https://www.reaqct.org/_astro/home_background_image.nRF6PacD_Z1aNPAs.webp"
-    />
-    <meta name="url" property="og:url" content="https://www.reaqct.org" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <section class="pt-12">
-        <Image
-          src={import("../assets/images/illustration_lg.png")}
-          alt="ReAQCT illustration"
-          width="650"
-          height="650"
-          class="absolute right-[-5%] top-[5%] z-0 opacity-10"
-        />
-        <Image
-          src={import("../assets/images/illustration_lg.png")}
-          alt="ReAQCT illustration"
-          width="400"
-          height="400"
-          class="absolute left-[5%] top-[50%] z-0 opacity-10"
-        />
-        <div class="container relative flex flex-col items-center">
-          <div class="w-full lg:max-w-[650px] flex flex-col gap-10">
-            <div class="relative left-0 xl:absolute xl:left-24">
-              <a href="/" class="flex items-center gap-2">
-                <Icon
-                  name="mdi:chevron-left"
-                  class="text-primary-orange text-3xl w-8 h-8 bg-white rounded-full bg-opacity-5"
-                />
-                <p>Back</p>
-              </a>
-            </div>
-            <div class="flex flex-col gap-8">
-              <div class="flex flex-col gap-2">
-                <h1 class="text-xl font-semibold text-text-title">
-                  Abstract submission
-                </h1>
-                <div class="text-justify">
-                  Only a single-page abstract is to be submitted for oral or
-                  poster presentation with reference to the authors’ manuscript
-                  or published paper (if any). Please use the
-                  <a
-                    class="font-medium text-primary-orange underline"
-                    href="https://docs.google.com/document/d/1x0HG_z1iQk3OV4Jo9I1NadBMvcGzlsqc/edit?usp=drive_link&ouid=115235549596899931776&rtpof=true&sd=true"
-                    target="_blank">Word</a
-                  > or
-                  <a
-                    class="font-medium text-primary-orange underline"
-                    href="https://drive.google.com/file/d/1aH-E9S-aZJFx8iwEXVNe7vfKlu8uxuC6/view?usp=drive_link"
-                    target="_blank">LaTeX</a
-                  > templates for preparing the abstract.
-                </div>
+<LayoutAbstractSubmit title="Abstract Upload - ReAQCT 2024">
+  <main>
+    <section class="pt-12">
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="650"
+        height="650"
+        class="absolute right-[-5%] top-[5%] z-0 opacity-10"
+      />
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="400"
+        height="400"
+        class="absolute left-[5%] top-[50%] z-0 opacity-10"
+      />
+      <div class="container relative flex flex-col items-center">
+        <div class="w-full lg:max-w-[650px] flex flex-col gap-10">
+          <div class="relative left-0 xl:absolute xl:left-24">
+            <a href="/" class="flex items-center gap-2">
+              <Icon
+                name="mdi:chevron-left"
+                class="text-primary-orange text-3xl w-8 h-8 bg-white rounded-full bg-opacity-5"
+              />
+              <p>Back</p>
+            </a>
+          </div>
+          <div class="flex flex-col gap-8">
+            <div class="flex flex-col gap-2">
+              <h1 class="text-xl font-semibold text-text-title">
+                Abstract submission
+              </h1>
+              <div class="text-justify text-sm">
+                Only a single-page abstract is to be submitted for oral or
+                poster presentation with reference to the authors’ manuscript or
+                published paper (if any). Please use the
+                <a
+                  class="font-medium text-primary-orange underline"
+                  href="https://docs.google.com/document/d/1x0HG_z1iQk3OV4Jo9I1NadBMvcGzlsqc/edit?usp=drive_link&ouid=115235549596899931776&rtpof=true&sd=true"
+                  target="_blank">Word</a
+                > or
+                <a
+                  class="font-medium text-primary-orange underline"
+                  href="https://drive.google.com/file/d/1aH-E9S-aZJFx8iwEXVNe7vfKlu8uxuC6/view?usp=drive_link"
+                  target="_blank">LaTeX</a
+                > templates for preparing the abstract.
               </div>
-
-              <AbstractSubmissionForm client:load />
             </div>
+
+            <AbstractSubmissionForm client:load />
           </div>
         </div>
-      </section>
-    </main>
-  </body>
-</html>
+      </div>
+    </section>
+  </main>
+</LayoutAbstractSubmit>
