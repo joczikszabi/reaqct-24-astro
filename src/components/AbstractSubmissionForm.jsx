@@ -37,7 +37,7 @@ export default function AbstractSubmissionForm() {
     postData.append('isTermsAccepted', checked);
     postData.append('abstractFile', abstractFile)
 
-    fetch('reaqct24-backend.azurewebsites.net/api/abstract', {
+    fetch('https://reaqct24-backend.azurewebsites.net/api/abstract', {
       method: 'POST',
       body: postData,
     })
