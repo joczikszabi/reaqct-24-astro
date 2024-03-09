@@ -193,11 +193,12 @@ export default function AbstractSubmissionForm() {
                   defaultChecked={isChecked}
                   onChange={() => setChecked((state) => !state)} />
                 <label for="checked-checkbox" class="text-text-title text-sm ms-2">I have read and agree to the{' '}
-                  <a class="font-semibold text-primary-orange underline" href="#">Terms of Service</a>
+                  <a class="font-semibold text-primary-orange underline" target="blank" href="https://drive.google.com/file/d/1iH66hHklgCjXnMGMJXtwTYhXtD42t_-J/view?usp=sharing">Privacy Policy</a>
                 </label>
               </div>
             </div>
             <button
+              className={"flex-shrink-0 hover:bg-opacity-5 hover:bg-white border-primary-orange text-sm border-[1px] text-primary-orange font-medium py-2 px-6 rounded-md mt-2 " + (isChecked ? '' : 'opacity-50')}
               class="flex-shrink-0 hover:bg-opacity-5 hover:bg-white border-primary-orange text-sm border-[2px] text-text-normal hover:text-text-title font-semibold py-2 px-6 rounded-md mt-2"
               type="submit"
               disabled={!isChecked}
