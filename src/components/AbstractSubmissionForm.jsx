@@ -7,7 +7,7 @@ export default function AbstractSubmissionForm() {
     firstName: '',
     lastName: '',
     email: '',
-    topic: 'Quantum algorithms & Information'
+    topic: 'Quantum Algorithms & Information'
   });
 
   const [abstractFile, setAbstractFile] = React.useState(null);
