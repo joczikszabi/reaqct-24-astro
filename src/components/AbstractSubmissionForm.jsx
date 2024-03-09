@@ -156,7 +156,7 @@ export default function AbstractSubmissionForm() {
                     value={formData.topic}
                     onChange={handleInputChange}
                   >
-                    <option>Quantum algorithms & Information</option>
+                    <option>Quantum Algorithms & Information</option>
                     <option>Quantum Error Correction</option>
                     <option>Quantum Software Engineering</option>
                     <option>HPC & Quantum Computing</option>
@@ -220,7 +220,7 @@ export default function AbstractSubmissionForm() {
               Thank you for your submission!
             </h1>
             <p class="mb-4">
-              We're glad that you've chosen to participate in the <span class="font-semibold text-primary-orange">ReAQCT 2024</span> conference.
+              We're glad that you've chosen to submit your abstract to the <span class="font-semibold text-primary-orange">ReAQCT 2024</span> conference.
             </p>
             <p>
               A confirmation email will be sent to your email address shortly. If you do not receive the confirmation email within 
