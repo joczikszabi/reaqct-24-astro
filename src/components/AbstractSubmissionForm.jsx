@@ -180,7 +180,7 @@ export default function AbstractSubmissionForm() {
                   type="file"
                   accept="application/pdf"
                   onChange={handleFileChange}/>
-                <p class="mt-1 text-xs text-gray-400" id="file_input_help">PDF (MAX. 10Mb).</p>
+                <p class="mt-1 text-xs text-gray-400" id="file_input_help">PDF (MAX. 10MB).</p>
               </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-4 relative">
