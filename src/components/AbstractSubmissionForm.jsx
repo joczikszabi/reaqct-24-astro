@@ -25,12 +25,6 @@ export default function AbstractSubmissionForm() {
 
   function handleFileChange(e) {
     setAbstractFile(e.target.files[0]);
-    setIsError(abstractFile == null);
-  }
-
-  function validateForm() {
-    console.log(abstractFile)
-    setIsError(formData.firstName === '' || formData.lastName === '' || formData.email === '' || formData.topic === '' || abstractFile == null);
   }
 
   const handleSubmit = (event) => {
