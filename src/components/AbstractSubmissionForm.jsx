@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FileInput, Label } from 'flowbite-react';
 
 export default function AbstractSubmissionForm() {
@@ -7,12 +7,13 @@ export default function AbstractSubmissionForm() {
     firstName: '',
     lastName: '',
     email: '',
-    topic: ''
+    topic: 'Quantum algorithms & Information'
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [abstractFile, setAbstractFile] = useState();
-  const [checked, setChecked] = React.useState(false);
+  const [abstractFile, setAbstractFile] = React.useState(null);
+  const [isChecked, setChecked] = React.useState(false);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [isError, setIsError] = React.useState(null);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -24,17 +25,30 @@ export default function AbstractSubmissionForm() {
 
   function handleFileChange(e) {
     setAbstractFile(e.target.files[0]);
-    }
+    setIsError(abstractFile == null);
+  }
+
+  function validateForm() {
+    console.log(abstractFile)
+    setIsError(formData.firstName === '' || formData.lastName === '' || formData.email === '' || formData.topic === '' || abstractFile == null);
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsError(formData.firstName === '' || formData.lastName === '' || formData.email === '' || formData.topic === '' || abstractFile == null);
+  }
+
+  useEffect(() => {
+    if (isError == true || isError == null) {
+      return;
+    }
 
     const postData = new FormData();
     postData.append('firstName', formData.firstName);
     postData.append('lastName', formData.lastName);
     postData.append('email', formData.email);
     postData.append('topic', formData.topic);
-    postData.append('isTermsAccepted', checked);
+    postData.append('isTermsAccepted', isChecked);
     postData.append('abstractFile', abstractFile)
 
     setIsSubmitted(true);
@@ -43,7 +57,7 @@ export default function AbstractSubmissionForm() {
       method: 'POST',
       body: postData,
     })
-  };
+  }, [isError]);
 
   return (
     <div>
@@ -68,7 +82,7 @@ export default function AbstractSubmissionForm() {
             </div>
           </div>
           <form class="w-full" onSubmit={handleSubmit}>
-            <div class="flex flex-wrap -mx-3 mb-4">
+            <div class="flex flex-wrap -mx-3 mb-6 relative">
               <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
                   class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
@@ -77,7 +91,7 @@ export default function AbstractSubmissionForm() {
                   First Name
                 </label>
                 <input
-                  class="appearance-none block w-full bg-gray-200 text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className={"appearance-none block w-full text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " + (isError && formData.firstName === '' ? 'bg-red-200' : 'bg-gray-200')}
                   id="grid-first-name"
                   name="firstName"
                   type="text"
@@ -85,6 +99,9 @@ export default function AbstractSubmissionForm() {
                   value={formData.firstName}
                   onChange={handleInputChange}
                 />
+                {isError && formData.firstName === '' &&
+                  <p class="text-xs text-red-600 mt-1 absolute -bottom-5">Required</p>
+                }
               </div>
               <div class="w-full md:w-1/2 px-3">
                 <label
@@ -94,7 +111,7 @@ export default function AbstractSubmissionForm() {
                   Last Name
                 </label>
                 <input
-                  class="appearance-none block w-full bg-gray-200 text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className={"appearance-none block w-full text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " + (isError && formData.lastName === '' ? 'bg-red-200' : 'bg-gray-200')}
                   id="grid-last-name"
                   name="lastName"
                   type="text"
@@ -102,9 +119,12 @@ export default function AbstractSubmissionForm() {
                   value={formData.lastName}
                   onChange={handleInputChange}
                 />
+                {isError && formData.lastName === '' &&
+                  <p class="text-xs text-red-600 mt-1 absolute -bottom-5">Required</p>
+                }
               </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-4">
+            <div class="flex flex-wrap -mx-3 mb-6 relative">
               <div class="w-full px-3">
                 <label
                   class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
@@ -113,7 +133,7 @@ export default function AbstractSubmissionForm() {
                   Email
                 </label>
                 <input
-                  class="appearance-none block w-full bg-gray-200 border text-primary-indigo border-gray-200 rounded-md py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className={"appearance-none block w-full text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " + (isError && formData.email === '' ? 'bg-red-200' : 'bg-gray-200')}
                   id="grid-email"
                   name="email"
                   type="text"
@@ -121,9 +141,12 @@ export default function AbstractSubmissionForm() {
                   value={formData.email}
                   onChange={handleInputChange}
                 />
+                {isError && formData.email === '' &&
+                  <p class="text-xs text-red-600 mt-1 absolute -bottom-5">Required</p>
+                }
               </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-4">
+            <div class="flex flex-wrap -mx-3 mb-4 relative">
               <div class="w-full px-3">
                 <label
                   class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
@@ -149,7 +172,7 @@ export default function AbstractSubmissionForm() {
                 </div>
               </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-4">
+            <div class="flex flex-wrap -mx-3 mb-4 relative">
               <div class="w-full px-3">
                 <label
                   class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
@@ -157,7 +180,7 @@ export default function AbstractSubmissionForm() {
                     Abstract paper
                 </label>
                 <input 
-                  class="block w-full bg-gray-200 border text-primary-indigo border-gray-500 rounded-md mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  className={"appearance-none block w-full text-primary-indigo border rounded-md leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " + (isError && abstractFile === null ? 'bg-red-200' : 'bg-gray-200')}
                   aria-describedby="file_input_help"
                   id="file_input"
                   type="file"
@@ -166,28 +189,31 @@ export default function AbstractSubmissionForm() {
                 <p class="mt-1 text-xs text-gray-400" id="file_input_help">PDF (MAX. 10Mb).</p>
               </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-4">
+            <div class="flex flex-wrap -mx-3 mb-4 relative">
             <div class="w-full px-3">
                 <input
                   class="w-4 h-4 text-primary-orange ring-primary-orangee bg-gray-200 border-gray-300 rounded-md focus:ring-primary-orange focus:ring-2"
                   id="checked-checkbox" 
                   type="checkbox" 
                   name="isTermsAccepted"
-                  defaultChecked={checked}
+                  defaultChecked={isChecked}
                   onChange={() => setChecked((state) => !state)} />
                 <label for="checked-checkbox" class="text-text-title text-sm ms-2">I have read and agree to the{' '}
-                  <a class="font-semibold text-primary-orange underline" href="#">Terms of Service</a>{' '}
-                  and{' '}
-                  <a class="font-semibold text-primary-orange underline" href="#">Privacy Policy</a>
+                  <a class="font-semibold text-primary-orange underline" href="#">Terms of Service</a>
                 </label>
               </div>
             </div>
             <button
               class="flex-shrink-0 hover:bg-opacity-5 hover:bg-white border-primary-orange text-sm border-[2px] text-text-normal hover:text-text-title font-semibold py-2 px-6 rounded-md mt-2"
               type="submit"
+              disabled={!isChecked}
             >
               Submit your abstract
             </button>
+            {
+              isError &&
+              <p class="text-sm text-red-600 mt-2">Please fill all the fields.</p>
+            }
           </form>
         </div>
       }
