@@ -16,7 +16,7 @@ html {
     position: relative;
     color: theme('colors.text.normal');
     text-align: left;
-    letter-spacing: 1px;
+    letter-spacing: .5px;
     line-height: 1.5rem;
     /* background: linear-gradient(180deg, rgba(52,47,41,0.25) 0%, rgba(23,29,68,1) 100%); */
     margin: 0;

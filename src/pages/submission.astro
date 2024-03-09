@@ -27,13 +27,35 @@ import Layout from "../layouts/Layout.astro";
           >
             Submission
           </h1>
-          <p>
-            <span class="font-semibold text-primary-orange">ReAQCT 2024</span>
-            is a conference serving as a premier venue for the presentation of high-quality
-            original research, innovation, and insights in quantum computing and
-            technology. Technical contributions reporting recent advances in these
-            fields are eligible for submission through two submission tracks.
-          </p>
+          <div>
+            <p>
+              <span class="font-semibold text-primary-orange">ReAQCT 2024</span>
+              is a conference serving as a premier venue for the presentation of
+              high-quality original research, innovation, and insights in quantum
+              computing and technology. Technical contributions reporting recent
+              advances in these fields are eligible for submission through two submission
+              tracks.
+            </p>
+            <div class="flex flex-row gap-2 items-center">
+              <div>
+                The proceedings of the conference will be published in the <a
+                  class="font-medium text-primary-orange underline"
+                  target="_blank"
+                  href="https://www.acm.org/publications/icps"
+                >
+                  ACM International Conference Proceedings Series (ICPS)</a
+                >
+              </div>
+              <Image
+                src={import("../assets/logos/ACM_ICPS.jpg")}
+                alt="ACP ICPS logo"
+                width="480"
+                height="480"
+                class="w-auto h-[60px] object-cover"
+              />
+            </div>
+          </div>
+
           <div class="flex flex-col gap-4 mt-2">
             <div>
               <p class="text-text-title font-semibold">Abstract only</p>
@@ -70,7 +92,7 @@ import Layout from "../layouts/Layout.astro";
               </ul>
             </div>
             <div>
-              <p class="text-text-title font-medium">Full manuscript</p>
+              <p class="text-text-title font-semibold">Full manuscript</p>
               <ul class="list-disc ml-4 md:ml-10">
                 <li class="py-0.5">
                   Full manuscripts will be submitted using
@@ -94,17 +116,6 @@ import Layout from "../layouts/Layout.astro";
                   coordinated by the Program Committee.
                 </li>
                 <li class="py-0.5">
-                  Upon acceptance, the submitting author is offered to give an
-                  oral presentation, and the manuscript is published at the
-                  <a
-                    class="font-medium text-primary-orange underline"
-                    target="_blank"
-                    href="https://www.acm.org/publications/icps"
-                    >International Conference Proceedings Series (ICPS) of the
-                    ACM</a
-                  >.
-                </li>
-                <li class="py-0.5">
                   We recommend preparing the manuscript in LaTeX, using the
                   <a
                     class="font-medium text-primary-orange underline"
@@ -119,6 +130,10 @@ import Layout from "../layouts/Layout.astro";
                   <span class="text-primary-orange font-medium"
                     >05 March, 2024</span
                   >.
+                </li>
+                <li class="py-0.5">
+                  Upon acceptance, the submitting author is offered to give an
+                  oral presentation.
                 </li>
               </ul>
             </div>
