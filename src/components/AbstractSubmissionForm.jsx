@@ -25,7 +25,6 @@ export default function AbstractSubmissionForm() {
   };
 
   const handlePresentationTypeChange = (e) => {
-    console.log(e.target.value)
     setPresentationType(e.target.value);
   }
 
