@@ -54,8 +54,7 @@ export default function AbstractSubmissionForm() {
 
     setIsSubmitted(true);
 
-    //fetch('https://reaqct24-backend.azurewebsites.net/api/abstract', {
-    fetch('http://localhost:3008/api/abstract', {
+    fetch('https://reaqct24-backend.azurewebsites.net/api/abstract', {
       method: 'POST',
       body: postData,
     })
