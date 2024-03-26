@@ -11,6 +11,7 @@ export default function AbstractSubmissionForm() {
   });
 
   const [abstractFile, setAbstractFile] = React.useState(null);
+  const [presentationType, setPresentationType] = React.useState('oral');
   const [isChecked, setChecked] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [isError, setIsError] = React.useState(null);
@@ -22,6 +23,11 @@ export default function AbstractSubmissionForm() {
       [name]: value,
     }));
   };
+
+  const handlePresentationTypeChange = (e) => {
+    console.log(e.target.value)
+    setPresentationType(e.target.value);
+  }
 
   function handleFileChange(e) {
     setAbstractFile(e.target.files[0]);
@@ -42,12 +48,14 @@ export default function AbstractSubmissionForm() {
     postData.append('lastName', formData.lastName);
     postData.append('email', formData.email);
     postData.append('topic', formData.topic);
+    postData.append('presentationType', presentationType);
     postData.append('isTermsAccepted', isChecked);
     postData.append('abstractFile', abstractFile)
 
     setIsSubmitted(true);
 
-    fetch('https://reaqct24-backend.azurewebsites.net/api/abstract', {
+    //fetch('https://reaqct24-backend.azurewebsites.net/api/abstract', {
+    fetch('http://localhost:3008/api/abstract', {
       method: 'POST',
       body: postData,
     })
@@ -163,6 +171,31 @@ export default function AbstractSubmissionForm() {
                     <option>Quantum Sensing</option>
                     <option>Other</option>
                   </select>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6 relative">
+              <div class="w-full flex flex-col px-3">
+                <label
+                  class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
+                  for="file_input">
+                    Presentation type
+                </label>
+                <div class="flex flex-row">
+                  <div class="flex items-center w-full rounded">
+                    <input checked id="presentation-type-oral" type="radio" value="oral" name="presentation-type" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 focus:ring-primary-orange"
+                      onChange={handlePresentationTypeChange}
+                      checked={presentationType === 'oral'}
+                    />
+                    <label for="presentation-type-oral" class="w-full ms-2 text-sm font-medium text-text-normal">Oral presentation</label>
+                  </div>
+                  <div class="flex items-center w-full rounded">
+                    <input id="presentation-type-poster" type="radio" value="poster" name="presentation-type" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 focus:ring-primary-orange"
+                      onChange={handlePresentationTypeChange}
+                      checked={presentationType === 'poster'}
+                    />
+                    <label for="presentation-type-poster" class="w-full ms-2 text-sm font-medium text-text-normal">Poster presentation</label>
+                  </div>
                 </div>
               </div>
             </div>
