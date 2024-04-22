@@ -37,7 +37,7 @@ export default function AbstractSubmissionForm() {
 
     console.log(isChecked)
 
-    fetch('http://localhost:3008/api/abstract/qnl', {
+    fetch('https://reaqct24-backend.azurewebsites.net/api/abstract/qnl', {
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',
       body: JSON.stringify({
