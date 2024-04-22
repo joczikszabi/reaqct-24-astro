@@ -57,16 +57,16 @@ export default function AbstractSubmissionForm() {
         <div class="flex flex-col gap-8">
           <div class="flex flex-col gap-2">
             <h1 class="text-xl font-semibold text-text-title">
-              Abstract submission for QNL members
+              Poster abstract submission for QNL members
             </h1>
             <div class="text-justify text-sm">
-              This submission form is made only for QNL members. If you are not a QNL member, please submit your abstract{' '}
+              This submission form is intended for QNL members only. If you are not a QNL member, please submit your abstract{' '}
               <a
                 class="font-medium text-primary-orange underline"
                 href="/submit">here</a>. <br/><br/> After submission, do not forget to register for the conference at<br/> <a
                 class="font-medium text-primary-orange underline"
                 href="https://e-conf.com/reaqct2024/registration/"
-                target="_blank">https://e-conf.com/reaqct2024/registration/</a>
+                target="_blank">https://e-conf.com/reaqct2024/registration/</a> where in the Note field, please indicate the following: "QNL member".
             </div>
           </div>
           <form class="w-full" onSubmit={handleSubmit}>
@@ -162,7 +162,7 @@ export default function AbstractSubmissionForm() {
                   class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
                   for="grid-email"
                 >
-                  Poster name
+                  Title of poster
                 </label>
                 <input
                   className={"appearance-none block w-full text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " + (isError && formData.email === '' ? 'bg-red-200' : 'bg-gray-200')}
