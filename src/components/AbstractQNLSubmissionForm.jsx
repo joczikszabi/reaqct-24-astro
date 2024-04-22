@@ -7,11 +7,10 @@ export default function AbstractSubmissionForm() {
     firstName: '',
     lastName: '',
     email: '',
-    topic: 'Quantum Algorithms & Information'
+    affiliation: '',
+    posterName: '',
   });
 
-  const [abstractFile, setAbstractFile] = React.useState(null);
-  const [presentationType, setPresentationType] = React.useState('oral');
   const [isChecked, setChecked] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [isError, setIsError] = React.useState(null);
@@ -24,17 +23,9 @@ export default function AbstractSubmissionForm() {
     }));
   };
 
-  const handlePresentationTypeChange = (e) => {
-    setPresentationType(e.target.value);
-  }
-
-  function handleFileChange(e) {
-    setAbstractFile(e.target.files[0]);
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsError(formData.firstName === '' || formData.lastName === '' || formData.email === '' || formData.topic === '' || abstractFile == null);
+    setIsError(formData.firstName === '' || formData.lastName === '' || formData.email === '' || formData.affiliation === '' || formData.posterName == '');
   }
 
   useEffect(() => {
@@ -42,20 +33,21 @@ export default function AbstractSubmissionForm() {
       return;
     }
 
-    const postData = new FormData();
-    postData.append('firstName', formData.firstName);
-    postData.append('lastName', formData.lastName);
-    postData.append('email', formData.email);
-    postData.append('topic', formData.topic);
-    postData.append('presentationType', presentationType);
-    postData.append('isTermsAccepted', isChecked);
-    postData.append('abstractFile', abstractFile)
-
     setIsSubmitted(true);
 
-    fetch('http://localhost:3008/api/abstract', {
+    console.log(isChecked)
+
+    fetch('http://localhost:3008/api/abstract/qnl', {
+      headers: { 'Content-Type': 'application/json' },
       method: 'POST',
-      body: postData,
+      body: JSON.stringify({
+        'firstName': formData.firstName,
+        'lastName': formData.lastName,
+        'email': formData.email,
+        'affiliation': formData.affiliation,
+        'posterName': formData.posterName,
+        'isTermsAccepted': true,
+      }),
     })
   }, [isError]);
 
@@ -65,20 +57,16 @@ export default function AbstractSubmissionForm() {
         <div class="flex flex-col gap-8">
           <div class="flex flex-col gap-2">
             <h1 class="text-xl font-semibold text-text-title">
-              Abstract submission
+              Abstract submission for QNL members
             </h1>
             <div class="text-justify text-sm">
-              Only a single-page abstract is to be submitted for oral or poster
-              presentation with reference to the authors’ manuscript or published
-              paper (if any). Please use the{' '}
+              This submission form is made only for QNL members. If you are not a QNL member, please submit your abstract{' '}
               <a
                 class="font-medium text-primary-orange underline"
-                href="https://docs.google.com/document/d/1x0HG_z1iQk3OV4Jo9I1NadBMvcGzlsqc/edit?usp=drive_link&ouid=115235549596899931776&rtpof=true&sd=true"
-                target="_blank">Word</a> or{' '}
-              <a
+                href="/submit">here</a>. <br/><br/> After submission, do not forget to register for the conference at<br/> <a
                 class="font-medium text-primary-orange underline"
-                href="https://drive.google.com/file/d/1aH-E9S-aZJFx8iwEXVNe7vfKlu8uxuC6/view?usp=drive_link"
-                target="_blank">LaTeX</a> templates for preparing the abstract.
+                href="https://e-conf.com/reaqct2024/registration/"
+                target="_blank">https://e-conf.com/reaqct2024/registration/</a>
             </div>
           </div>
           <form class="w-full" onSubmit={handleSubmit}>
@@ -146,72 +134,48 @@ export default function AbstractSubmissionForm() {
                 }
               </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-4 relative">
+            <div class="flex flex-wrap -mx-3 mb-6 relative">
               <div class="w-full px-3">
                 <label
                   class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
-                  for="grid-state"
+                  for="grid-email"
                 >
-                  Topic
+                  Affiliation
                 </label>
-                <div class="relative">
-                  <select
-                    class="mb-3 block appearance-none w-full bg-gray-200 border border-gray-200 text-primary-indigo  py-2 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-state"
-                    name="topic"
-                    value={formData.topic}
-                    onChange={handleInputChange}
-                  >
-                    <option>Quantum Algorithms & Information</option>
-                    <option>Quantum Error Correction</option>
-                    <option>Quantum Software Engineering</option>
-                    <option>HPC & Quantum Computing</option>
-                    <option>Quantum Sensing</option>
-                    <option>Other</option>
-                  </select>
-                </div>
+                <input
+                  className={"appearance-none block w-full text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " + (isError && formData.email === '' ? 'bg-red-200' : 'bg-gray-200')}
+                  id="grid-affiliation"
+                  name="affiliation"
+                  type="text"
+                  placeholder="Your affiliation"
+                  value={formData.affiliation}
+                  onChange={handleInputChange}
+                />
+                {isError && formData.affiliation === '' &&
+                  <p class="text-xs text-red-600 mt-1 absolute -bottom-5">Required</p>
+                }
               </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-6 relative">
-              <div class="w-full flex flex-col px-3">
-                <label
-                  class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
-                  for="file_input">
-                    Presentation type
-                </label>
-                <div class="flex flex-row">
-                  <div class="flex items-center w-full rounded">
-                    <input checked id="presentation-type-oral" type="radio" value="oral" name="presentation-type" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 focus:ring-primary-orange"
-                      onChange={handlePresentationTypeChange}
-                      checked={presentationType === 'oral'}
-                    />
-                    <label for="presentation-type-oral" class="w-full ms-2 text-sm font-medium text-text-normal">Oral presentation</label>
-                  </div>
-                  <div class="flex items-center w-full rounded">
-                    <input id="presentation-type-poster" type="radio" value="poster" name="presentation-type" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 focus:ring-primary-orange"
-                      onChange={handlePresentationTypeChange}
-                      checked={presentationType === 'poster'}
-                    />
-                    <label for="presentation-type-poster" class="w-full ms-2 text-sm font-medium text-text-normal">Poster presentation</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-4 relative">
               <div class="w-full px-3">
                 <label
                   class="block uppercase tracking-wide text-text-normal text-xs font-semibold mb-2"
-                  for="file_input">
-                    Abstract paper
+                  for="grid-email"
+                >
+                  Poster name
                 </label>
-                <input 
-                  className={"appearance-none block w-full text-primary-indigo border rounded-md leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " + (isError && abstractFile === null ? 'bg-red-200' : 'bg-gray-200')}
-                  aria-describedby="file_input_help"
-                  id="file_input"
-                  type="file"
-                  accept="application/pdf"
-                  onChange={handleFileChange}/>
-                <p class="mt-1 text-xs text-gray-400" id="file_input_help">PDF (MAX. 10MB).</p>
+                <input
+                  className={"appearance-none block w-full text-primary-indigo border rounded-md py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " + (isError && formData.email === '' ? 'bg-red-200' : 'bg-gray-200')}
+                  id="grid-poster-name"
+                  name="posterName"
+                  type="text"
+                  placeholder="Name of your poster"
+                  value={formData.posterName}
+                  onChange={handleInputChange}
+                />
+                {isError && formData.posterName === '' &&
+                  <p class="text-xs text-red-600 mt-1 absolute -bottom-5">Required</p>
+                }
               </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-4 relative">
@@ -252,9 +216,15 @@ export default function AbstractSubmissionForm() {
             <p class="mb-4">
               We're glad that you've chosen to submit your abstract to the <span class="font-semibold text-primary-orange">ReAQCT 2024</span> conference.
             </p>
-            <p>
+            <p class="mb-4">
               A confirmation email will be sent to your email address shortly. If you do not receive the confirmation email within 
               the next 24 hours, please reach out to us at <span class="font-semibold text-primary-orange">contact@reaqct.org</span>.
+            </p>
+            <p>
+              Do not forget to register for the conference at<br/> <a
+                class="font-medium text-primary-orange underline"
+                href="https://e-conf.com/reaqct2024/registration/"
+                target="_blank">https://e-conf.com/reaqct2024/registration/</a>
             </p>
           </div>
         </div>

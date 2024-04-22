@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon/components";
+import AbstractQNLSubmissionForm from "../components/AbstractQNLSubmissionForm.jsx";
+---
+
+<div class="container relative flex flex-col items-center">
+  <div class="w-full lg:max-w-[650px] flex flex-col gap-10">
+    <div class="relative left-0 xl:absolute xl:left-24">
+      <a href="/submission" class="flex items-center gap-2">
+        <Icon
+          name="mdi:chevron-left"
+          class="text-primary-orange text-3xl w-8 h-8 bg-white rounded-full bg-opacity-5"
+        />
+        <p>Back</p>
+      </a>
+    </div>
+    <AbstractQNLSubmissionForm client:load />
+  </div>
+</div>
