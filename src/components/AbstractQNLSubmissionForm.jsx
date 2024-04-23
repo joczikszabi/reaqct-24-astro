@@ -57,16 +57,16 @@ export default function AbstractSubmissionForm() {
         <div class="flex flex-col gap-8">
           <div class="flex flex-col gap-2">
             <h1 class="text-xl font-semibold text-text-title">
-              Poster abstract submission for QNL members
+              Poster title submission form for the QNL poster session
             </h1>
             <div class="text-justify text-sm">
               This submission form is intended for QNL members only. If you are not a QNL member, please submit your abstract{' '}
               <a
                 class="font-medium text-primary-orange underline"
-                href="/submit">here</a>. <br/><br/> After submission, do not forget to register for the conference at<br/> <a
+                href="/submit">here</a>. <br/><br/> Do not forget to register for the conference at<br/> <a
                 class="font-medium text-primary-orange underline"
                 href="https://forms.gle/hAKSBjsUjzTucNeJ6"
-                target="_blank">https://forms.gle/hAKSBjsUjzTucNeJ6</a> where in the Note field, please indicate the following: "QNL member".
+                target="_blank">https://forms.gle/hAKSBjsUjzTucNeJ6</a>
             </div>
           </div>
           <form class="w-full" onSubmit={handleSubmit}>
@@ -197,7 +197,7 @@ export default function AbstractSubmissionForm() {
               type="submit"
               disabled={!isChecked}
             >
-              Submit your abstract
+              Submit your poster contribution
             </button>
             {
               isError &&
