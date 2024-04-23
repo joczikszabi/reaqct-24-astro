@@ -65,8 +65,8 @@ export default function AbstractSubmissionForm() {
                 class="font-medium text-primary-orange underline"
                 href="/submit">here</a>. <br/><br/> After submission, do not forget to register for the conference at<br/> <a
                 class="font-medium text-primary-orange underline"
-                href="https://e-conf.com/reaqct2024/registration/"
-                target="_blank">https://e-conf.com/reaqct2024/registration/</a> where in the Note field, please indicate the following: "QNL member".
+                href="https://forms.gle/hAKSBjsUjzTucNeJ6"
+                target="_blank">https://forms.gle/hAKSBjsUjzTucNeJ6</a> where in the Note field, please indicate the following: "QNL member".
             </div>
           </div>
           <form class="w-full" onSubmit={handleSubmit}>
