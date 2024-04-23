@@ -169,7 +169,7 @@ export default function AbstractSubmissionForm() {
                   id="grid-poster-name"
                   name="posterName"
                   type="text"
-                  placeholder="Name of your poster"
+                  placeholder="Title of poster"
                   value={formData.posterName}
                   onChange={handleInputChange}
                 />
