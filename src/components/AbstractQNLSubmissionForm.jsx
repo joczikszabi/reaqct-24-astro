@@ -223,8 +223,8 @@ export default function AbstractSubmissionForm() {
             <p>
               Do not forget to register for the conference at<br/> <a
                 class="font-medium text-primary-orange underline"
-                href="https://e-conf.com/reaqct2024/registration/"
-                target="_blank">https://e-conf.com/reaqct2024/registration/</a>
+                href="https://forms.gle/hAKSBjsUjzTucNeJ6"
+                target="_blank">https://forms.gle/hAKSBjsUjzTucNeJ6</a>
             </p>
           </div>
         </div>
