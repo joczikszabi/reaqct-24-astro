@@ -11,7 +11,7 @@ export default function AbstractSubmissionForm() {
   });
 
   const [abstractFile, setAbstractFile] = React.useState(null);
-  const [presentationType, setPresentationType] = React.useState('oral');
+  const [presentationType, setPresentationType] = React.useState('poster');
   const [isChecked, setChecked] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [isError, setIsError] = React.useState(null);
@@ -181,11 +181,12 @@ export default function AbstractSubmissionForm() {
                 </label>
                 <div class="flex flex-row">
                   <div class="flex items-center w-full rounded">
-                    <input checked id="presentation-type-oral" type="radio" value="oral" name="presentation-type" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 focus:ring-primary-orange"
+                    <input checked id="presentation-type-oral" type="radio" value="oral" name="presentation-type" class="w-4 h-4 text-primary-orange bg-gray-500 border-gray-500"
                       onChange={handlePresentationTypeChange}
                       checked={presentationType === 'oral'}
+                      disabled={true}
                     />
-                    <label for="presentation-type-oral" class="w-full ms-2 text-sm font-medium text-text-normal">Oral presentation</label>
+                    <label for="presentation-type-oral" class="w-full ms-2 text-sm font-medium text-gray-400">Oral presentation</label>
                   </div>
                   <div class="flex items-center w-full rounded">
                     <input id="presentation-type-poster" type="radio" value="poster" name="presentation-type" class="w-4 h-4 text-primary-orange bg-gray-100 border-gray-300 focus:ring-primary-orange"
