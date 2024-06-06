@@ -29,31 +29,11 @@ import Layout from "../layouts/Layout.astro";
             Our Sponsors
           </h1>
 
-          <div class="flex flex-row justify-around flex-wrap">
+          <div class="flex flex-row justify-around flex-wrap gap-4">
             <div class="h-[100px] flex items-center">
               <Image
                 src={import("../assets/logos/bosch.png")}
                 alt="Bosch logo"
-                width="360"
-                loading="lazy"
-                decoding="async"
-                class="w-[150px] md:w-[150px] h-fit"
-              />
-            </div>
-            <div class="h-[100px] flex items-center">
-              <Image
-                src={import("../assets/logos/qutility.png")}
-                alt="Qutility logo"
-                width="360"
-                loading="lazy"
-                decoding="async"
-                class="w-[150px] md:w-[150px] h-fit"
-              />
-            </div>
-            <div class="h-[100px] flex items-center">
-              <Image
-                src={import("../assets/logos/xeedq.png")}
-                alt="XeedQ logo"
                 width="360"
                 loading="lazy"
                 decoding="async"
@@ -78,6 +58,36 @@ import Layout from "../layouts/Layout.astro";
                 loading="lazy"
                 decoding="async"
                 class="w-[200px] md:w-[200px] h-fit"
+              />
+            </div>
+            <div class="h-[100px] flex items-center">
+              <Image
+                src={import("../assets/logos/qruise.png")}
+                alt="Qruise logo"
+                width="360"
+                loading="lazy"
+                decoding="async"
+                class="w-[80px] md:w-[80px] h-fit"
+              />
+            </div>
+            <div class="h-[100px] flex items-center">
+              <Image
+                src={import("../assets/logos/qutility.png")}
+                alt="Qutility logo"
+                width="360"
+                loading="lazy"
+                decoding="async"
+                class="w-[150px] md:w-[150px] h-fit"
+              />
+            </div>
+            <div class="h-[100px] flex items-center">
+              <Image
+                src={import("../assets/logos/xeedq.png")}
+                alt="XeedQ logo"
+                width="360"
+                loading="lazy"
+                decoding="async"
+                class="w-[150px] md:w-[150px] h-fit"
               />
             </div>
           </div>
