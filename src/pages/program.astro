@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import LayoutAbstractSubmit from "../layouts/LayoutAbstractSubmit.astro";
+import ProgramRedirect from "../components/Program.astro";
+---
+
+<LayoutAbstractSubmit title="Abstract Upload - ReAQCT 2024">
+  <main>
+    <section class="pt-12">
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="650"
+        height="650"
+        class="absolute right-[-5%] top-[5%] z-0 opacity-10"
+      />
+      <Image
+        src={import("../assets/images/illustration_lg.png")}
+        alt="ReAQCT illustration"
+        width="400"
+        height="400"
+        class="absolute left-[5%] top-[50%] z-0 opacity-10"
+      />
+      <ProgramRedirect />
+    </section>
+  </main>
+</LayoutAbstractSubmit>
