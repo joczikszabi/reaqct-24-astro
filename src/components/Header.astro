@@ -129,6 +129,15 @@ const currentPath = new URL(Astro.request.url).pathname;
           Program
         </a>
         <a
+          href="/venue"
+          target="_blank"
+          class={currentPath === "/venue"
+            ? "font-semibold text-primary-orange"
+            : "text-text-normal hover:text-primary-orange active:text-primary-orange"}
+        >
+          Venue
+        </a>
+        <a
           href="/sponsors"
           class={currentPath.startsWith("/sponsors")
             ? "font-semibold text-primary-orange"
@@ -144,6 +153,7 @@ const currentPath = new URL(Astro.request.url).pathname;
         >
           Committees
         </a>
+        <!--
         <a
           href="/submission"
           class={currentPath.startsWith("/submission")
@@ -160,6 +170,7 @@ const currentPath = new URL(Astro.request.url).pathname;
         >
           Registration
         </a>
+         -->
         {
           /*
           <a
