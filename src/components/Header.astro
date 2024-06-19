@@ -119,15 +119,25 @@ const currentPath = new URL(Astro.request.url).pathname;
         >
           Home
         </a>
-        <a
-          href="/program"
-          target="_blank"
-          class={currentPath === "/program"
-            ? "font-semibold text-primary-orange"
-            : "text-text-normal hover:text-primary-orange active:text-primary-orange"}
-        >
+        <div class="group">
           Program
-        </a>
+          <ul
+            class="absolute top-[47px] bg-black/10 px-4 py-2 rounded-md hidden w-[200px] group-hover:block"
+          >
+            <li class="py-[2px]">
+              <a
+                href="https://indico.wigner.hu/event/1588/timetable/#all.detailed"
+                target="_blank">Indico</a
+              >
+            </li>
+            <li class="py-[2px]">
+              <a
+                href="https://reaqct24storage.blob.core.windows.net/assets/CONFERENCE%20program%202_updated.pdf?sp=r&st=2024-06-06T23:06:15Z&se=2025-07-18T07:06:15Z&spr=https&sv=2022-11-02&sr=b&sig=q7IIp1U8TX4E9Jyyi%2BAr3kFgWmi5jEIwj89C2YLMh28%3D"
+                target="_blank">Downloadable PDF</a
+              >
+            </li>
+          </ul>
+        </div>
         <a
           href="/venue"
           target="_blank"
@@ -137,6 +147,7 @@ const currentPath = new URL(Astro.request.url).pathname;
         >
           Venue
         </a>
+        <!--
         <a
           href="/sponsors"
           class={currentPath.startsWith("/sponsors")
@@ -145,6 +156,7 @@ const currentPath = new URL(Astro.request.url).pathname;
         >
           Sponsors
         </a>
+        -->
         <a
           href="/committees"
           class={currentPath.startsWith("/committees")
