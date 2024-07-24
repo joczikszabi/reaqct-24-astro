@@ -29,22 +29,16 @@ const imageFiles = fs
         height="400"
         class="absolute left-[5%] top-[50%] z-0 opacity-10"
       />
-      <div class="container relative flex flex-col gap-12">
+      <div class="container relative flex flex-col gap-6">
         <div class="flex w-full flex-col gap-4">
           <h1
             class="text-xl font-semibold uppercase text-text-title md:text-2xl"
           >
-            Media
+            Gallery
           </h1>
-          <p>
-            The registration to the conference is now open via the online
-            registration until <span class="font-semibold text-primary-orange"
-              >10 June, 2024</span
-            >.
-          </p>
         </div>
         <div>
-          <ReaqctConferenceImages imagePaths={imageFiles} />
+          <ReaqctConferenceImages client:load imagePaths={imageFiles} />
         </div>
       </div>
     </section>
