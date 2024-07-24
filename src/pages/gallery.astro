@@ -6,10 +6,10 @@ import ReaqctConferenceImages from "../components/ReaqctConferenceImages.jsx";
 // Read image files from the directory
 import fs from "fs";
 import path from "path";
-const imagesDirectory = path.resolve("./src/assets/images/conference");
+const imagesDirectory = path.resolve("src/assets/images/conference");
 const imageFiles = fs
   .readdirSync(imagesDirectory)
-  .map((file) => `./src/assets/images/conference/${file}`);
+  .map((file) => `src/assets/images/conference/${file}`);
 ---
 
 <Layout title="Registration - ReAQCT 2024">
