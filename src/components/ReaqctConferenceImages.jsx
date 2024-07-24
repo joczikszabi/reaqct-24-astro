@@ -1,19 +1,24 @@
-// ReaqctConferenceImages.jsx
-
 import React from 'react';
 
 const ReaqctConferenceImages = ({ imagePaths }) => {
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-3 gap-2">
       {imagePaths.map((imagePath, index) => (
-        <img
+        <a
+          href={imagePath}
+          target="_blank"
+          rel="noopener noreferrer"
           key={index}
-          src={imagePath}
-          alt={`Conference Image ${index}`}
-          className="h-[200px] w-full object-cover rounded-sm"
-          loading="lazy"
-          decoding="async"
-        />
+          className="group relative"
+        >
+          <img
+            src={imagePath}
+            alt={`Conference Image ${index}`}
+            className="h-[250px] w-full object-cover rounded-md cursor-pointer"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
       ))}
     </div>
   );
